@@ -1,4 +1,4 @@
-# Session name goes here Docs
+# GitHub Copilot as an AI Agent in the Developer Workflow
 
 ## Introduction
 

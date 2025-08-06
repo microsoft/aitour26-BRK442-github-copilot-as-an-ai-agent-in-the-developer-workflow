@@ -19,15 +19,15 @@
 
 
 # Project information .........................................
-site_name: "Session Title"
+site_name: "GitHub Copilot as an AI Agent in the Developer Workflow"
 site_url: 
-site_author: Content Creator
+site_author: Julia Muiruri
 site_description: >-
   Demo mkdocs for AI Tour Repos
 
 # Repository ..................................................
-repo_name: microsoft/AITour26-Repo-Template
-repo_url: https://github.com/microsoft/AITour26-Repo-Template
+repo_name: aitour26-BRK442-the-agent-awakens-collaborative-development-with-github-copilot
+repo_url: https://github.com/microsoft/aitour26-BRK442-the-agent-awakens-collaborative-development-with-github-copilot
 
 # Copyright ...................................................
 copyright: >
