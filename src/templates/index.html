@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Store Demo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Product Store Demo</h1>
+            <p>Manage your products with full CRUD operations</p>
+        </header>
+
+        <!-- Add Product Form -->
+        <section class="add-product-section">
+            <h2>Add New Product</h2>
+            <form id="add-product-form" class="product-form">
+                <div class="form-group">
+                    <label for="product-name">Product Name:</label>
+                    <input type="text" id="product-name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="product-description">Description:</label>
+                    <textarea id="product-description" name="description" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Add Product</button>
+            </form>
+        </section>
+
+        <!-- Loading Spinner -->
+        <div id="loading" class="loading hidden">
+            <div class="spinner"></div>
+            <p>Loading...</p>
+        </div>
+
+        <!-- Error Message -->
+        <div id="error-message" class="error-message hidden">
+            <p id="error-text"></p>
+            <button id="close-error" class="btn btn-small">&times;</button>
+        </div>
+
+        <!-- Success Message -->
+        <div id="success-message" class="success-message hidden">
+            <p id="success-text"></p>
+            <button id="close-success" class="btn btn-small">&times;</button>
+        </div>
+
+        <!-- Products List -->
+        <section class="products-section">
+            <h2>Products</h2>
+            <div id="products-container">
+                <div id="no-products" class="no-products">
+                    <p>No products available. Add your first product above!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Edit Product Modal -->
+        <div id="edit-modal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Edit Product</h3>
+                    <button id="close-modal" class="btn btn-small">&times;</button>
+                </div>
+                <form id="edit-product-form" class="product-form">
+                    <input type="hidden" id="edit-product-id">
+                    <div class="form-group">
+                        <label for="edit-product-name">Product Name:</label>
+                        <input type="text" id="edit-product-name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-product-description">Description:</label>
+                        <textarea id="edit-product-description" name="description" rows="3"></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" id="cancel-edit" class="btn btn-secondary">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Update Product</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Delete Confirmation Modal -->
+        <div id="delete-modal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Confirm Delete</h3>
+                    <button id="close-delete-modal" class="btn btn-small">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete this product?</p>
+                    <p><strong id="delete-product-name"></strong></p>
+                </div>
+                <div class="form-actions">
+                    <button type="button" id="cancel-delete" class="btn btn-secondary">Cancel</button>
+                    <button type="button" id="confirm-delete" class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

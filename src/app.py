@@ -1,10 +1,17 @@
-from flask import Flask, jsonify, request, abort
+from flask import Flask, jsonify, request, abort, render_template
+from flask_cors import CORS
 from uuid import uuid4
 
 app = Flask(__name__)
+CORS(app)  # Enable CORS for all routes
 
 # In-memory product store
 data = {}
+
+@app.route('/')
+def index():
+    """Serve the main UI"""
+    return render_template('index.html')
 
 @app.route('/products', methods=['GET'])
 def get_products():
