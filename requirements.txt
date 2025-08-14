@@ -1,2 +1,6 @@
 # Documentation
 mkdocs-material
+Flask
+SQLAlchemy>=1.4.0
+pytest
+selenium
