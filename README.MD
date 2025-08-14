@@ -22,7 +22,6 @@ By the end of this session, learners will be able to:
 -  Use GitHub Copilot Agent mode within modern development workflows.
 -  Assign issues and review Pull Requests from the Coding agent as an agent co-worker, scaling your team. 
 - Apply GitHub Copilot custom instructions to ensure secure and high quality results
-- Effortlessly add a new layer of instant code checks with Copilot Code Review to further improve on code quality
 - Use built-in and external MCP Servers to integrate powerful services that 'just work' with GitHub Copilot
 
 ### 💻 Technologies Used
@@ -31,15 +30,17 @@ By the end of this session, learners will be able to:
 1. [GitHub Copilot](https://github.com/features/copilot) as the AI that builds with you
 1. [MCP Servers](https://code.visualstudio.com/mcp) to extend agent mode
 
-### 🔗 Session Resources
+<!-- ### 🔗 Session Resources
 | Resources          | Links                             | Description        |
 |:-------------------|:----------------------------------|:-------------------|
-| Session Docs | [TO DO] Coming soon | Documentation |
+| Session Docs | [TODO] Coming soon | Documentation | -->
 
 ### 📚 Continued Learning Resources
 | Resources          | Links                             | Description        |
 |:-------------------|:----------------------------------|:-------------------|
 | Copilot Adventures | https://github.com/microsoft/CopilotAdventures | GitHub Copilot coding adventures |
+| GitHub Copilot in VS Code | [Documentation](https://code.visualstudio.com/docs/copilot/overview) | GitHub Copilot Documentation |
+| Visual Studio Code | https://www.youtube.com/code | VS Code, the Open Source AI code editor YouTube |
 | Learn at AI Tour | https://aka.ms/LearnAtAITour | Continue learning on Microsoft Learn |
 
 ### 🌐 Multi-Language Support
