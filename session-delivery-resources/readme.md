@@ -14,40 +14,40 @@ Prior to delivering the workshop please:
 | Resources          | Links                            | Description |
 |-------------------|----------------------------------|-------------------|
 | Session Delivery Deck     |  [Deck](https://aka.ms/) | Presentation slides for this session with presenter notes and embedded demo videos (no-audio) |
-| More Files     |  [Some More Files](https://aka.ms/) | More File Descriptions |
+| Demo Set up Guide     |  [Demo setup](./00-setup/demo-setup.md) | Guide to set up for the demos |
 
 
 ## 🚀Get Started
 
-The workshop is divided into multiple sections including 16 slides and 5 demos
+The workshop is divided into multiple sections including 42 slides and 5 demos
 
 ### 🕐Timing
 
-| Time        | Description 
---------------|-------------
-0:00 - 5:00 [5 mins]  | Introduction, agenda & scenario overview
-5:00 - 15:00 [10 mins]  | Problem [PRB] 1: Time to market 
-15:00 - 20:00 [5 mins] | Problem [PRB] 2: The ever-growing backlog 
-20:00 - 30:00 [10 mins]  | Problem [PRB] 3: Quality 
-20:00 - 30:00 [10 mins]  | Problem [PRB] 4: Handling integrations
-30:00 - 40:00 [10 mins]  | Problem [PRB] 5: Complexities
-43:00 - 45:00 [2 mins]  | Wrap up
+| Time        | Description | Slides
+--------------|------------- |-------------
+0:00 - 5:00 [5 mins]  | Introduction - Session & Speaker, <br> Agenda, <br> Scenario - Zava & engineering problems, <br> Solution overview | 1 - 6
+5:00 - 15:00 [10 mins]  | Problem 1: Time to market <br> Solution: Coding Agent <br> Demo 1: Assign issue to Coding agent <br> Coding agent overview <br> Demo 2: Review PR from coding agent | 7 - 17
+15:00 - 20:00 [5 mins] | Problem 2: Quality <br> Solution: Custom instructions <br> Demo 3: Generate custom instructions | 18 - 23
+20:00 - 25:00 [5 mins]  | Problem 3: Capacity Constraints <br> Solution: Agent mode <br> Demo 4: Add tests using Agent mode | 24 - 29
+25:00 - 35:00 [10 mins]  | Problem 4: Integration Complexity <br> Solution: MCP <br> Demo 5: Installing GitHub MCP Server, creating issues from project documentation |30 - 35
+35:00 - 40:00 [10 mins]  | Problem 5: Technical Complexity <br> Solution: MCP <br> Demo 6: Add SQLite db and use MS docs MCP server for best practices| 36 - 39
+40:00 - 45:00 [5 mins]  | Recap & Summary <br> Call to Action | 40 - 42
 
 ### 🏋️Preparation
-Preparation Notes go here
+
+- Ensure you rehearse the session (complete with slides and demos) before delivering it to increase your confidence with the demo story and timings. Each speaker will likely have a different style and pace for this topic, so rehearse to find your own rhythm.
+- Ensure you stay up to date with the latest GitHub Copilot features and UI changes on VS Code, as these can change frequently.
+
 
 ### 🖥️ Demos
 
-Check out the complete demo setup guide here
+Check out the complete demo setup guide [here](./00-setup/demo-setup.md)
 
-| Demo        | Minutes | Video 
+| Demo        | Minutes | Demo Recording 
 --------------|------------- | ---------------
-[PRB 1] Assign a task to the coding agent on VS Code using the Pull Requests extension | 5 | Coming soon
-[PRB 1] Review the PR from the coding agent on GitHub.com  | 5 | Coming soon
-[PRB 2] Use Copilot Agent mode to add a new component to the webapp from a screenshot  | 5 | Coming soon
-[PRB 3] Create custom instructions from the awesome-copilot repository  | 5 | Coming soon
-[PRB 3] Request an initial review from copilot before creating the PR  | 5 | Coming soon
-[PRB 4] Add the GitHub MCP Server on VS Code  | 5 | Coming soon
-[PRB 4] Use the GitHub MCP Server to extract technical requirements and create issues  | 5 | Coming soon
-[PRB 5] Use the Microsoft Docs MCP Server to research on database options & best practices  | 5 | Coming soon
-[PRB 5] Use the PostgreSQL extension with the @pgsql agent to explore the database  | 5 | Coming soon
+Assign an issue to the Coding Agent <br> [Instructions](./01-coding-agent-assign-task/coding-agent-assign.md) | x | [Recording](./01-coding-agent-assign-task/copilot-coding-agent.mp4)
+Review the PR from the Coding Agent <br> [Instructions](./02-coding-agent-pr-review/coding-agent-prreview.md)  | x | [Recording](./02-coding-agent-pr-review/coding-agent-prreview.md)
+Generate custom instructions [Instructions](./03-custom-instructions/custom-instructions.md)  | x | [Recording](./03-custom-instructions/copilot-custom-instructions.mp4)
+Create GitHub issues from project documentation using GitHub MCP Server <br> [Instructions](./04-integration-complexity/add-mcp.md) | x | [Recording](./04-integration-complexity/copilot-agent-mode-tests.mp4)
+Add a SQLite database to the project <br> [Instructions](./05-technical-complexity/add-sqldb.md)  | x | [Recording](./04-integration-complexity/copilot-agent-mode-tests.mp4)
+
