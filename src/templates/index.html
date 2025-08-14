@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Store Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-section {
+            border-bottom: 2px solid #eee;
+            padding-bottom: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .btn {
+            background: #667eea;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .btn:hover {
+            background: #5a6fd8;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+
+        .btn-danger {
+            background: #dc3545;
+        }
+
+        .btn-danger:hover {
+            background: #c82333;
+        }
+
+        .btn-small {
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-card h3 {
+            color: #333;
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .product-card p {
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .product-id {
+            font-family: 'Courier New', monospace;
+            font-size: 0.8rem;
+            color: #999;
+            margin-bottom: 1rem;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+        }
+
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            border: 1px solid #f5c6cb;
+        }
+
+        .success {
+            background: #d4edda;
+            color: #155724;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            border: 1px solid #c3e6cb;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: #666;
+        }
+
+        .empty-state h3 {
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        /* Edit form styles */
+        .edit-form {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .card {
+                padding: 1rem;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .product-actions {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                margin-right: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                margin-bottom: 1rem;
+                padding: 1rem 0;
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .form-group {
+                margin-bottom: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Product Store Demo</h1>
+            <p>Manage your products with ease</p>
+        </div>
+
+        <div id="message-container"></div>
+
+        <div class="card">
+            <div class="form-section">
+                <h2>Add New Product</h2>
+                <form id="product-form">
+                    <div class="form-group">
+                        <label for="product-name">Product Name</label>
+                        <input type="text" id="product-name" name="name" required placeholder="Enter product name">
+                    </div>
+                    <div class="form-group">
+                        <label for="product-description">Description</label>
+                        <textarea id="product-description" name="description" placeholder="Enter product description"></textarea>
+                    </div>
+                    <button type="submit" class="btn" id="submit-btn">Add Product</button>
+                    <button type="button" class="btn btn-secondary" id="cancel-btn" style="display: none;">Cancel</button>
+                </form>
+            </div>
+
+            <div>
+                <h2>Products</h2>
+                <div id="loading" class="loading" style="display: none;">
+                    Loading products...
+                </div>
+                <div id="products-container">
+                    <div class="products-grid" id="products-grid">
+                        <!-- Products will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        class ProductStore {
+            constructor() {
+                this.products = [];
+                this.editingProduct = null;
+                this.init();
+            }
+
+            init() {
+                this.bindEvents();
+                this.loadProducts();
+            }
+
+            bindEvents() {
+                document.getElementById('product-form').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.handleFormSubmit();
+                });
+
+                document.getElementById('cancel-btn').addEventListener('click', () => {
+                    this.cancelEdit();
+                });
+            }
+
+            async handleFormSubmit() {
+                const name = document.getElementById('product-name').value.trim();
+                const description = document.getElementById('product-description').value.trim();
+
+                if (!name) {
+                    this.showMessage('Product name is required', 'error');
+                    return;
+                }
+
+                const productData = { name, description };
+
+                try {
+                    if (this.editingProduct) {
+                        await this.updateProduct(this.editingProduct.id, productData);
+                    } else {
+                        await this.createProduct(productData);
+                    }
+                } catch (error) {
+                    this.showMessage(`Error: ${error.message}`, 'error');
+                }
+            }
+
+            async createProduct(productData) {
+                this.showLoading(true);
+                
+                const response = await fetch('/products', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(productData)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Failed to create product: ${response.status}`);
+                }
+
+                const product = await response.json();
+                this.showMessage('Product created successfully!', 'success');
+                this.resetForm();
+                this.loadProducts();
+                this.showLoading(false);
+            }
+
+            async updateProduct(productId, productData) {
+                this.showLoading(true);
+                
+                const response = await fetch(`/products/${productId}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(productData)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Failed to update product: ${response.status}`);
+                }
+
+                const product = await response.json();
+                this.showMessage('Product updated successfully!', 'success');
+                this.cancelEdit();
+                this.loadProducts();
+                this.showLoading(false);
+            }
+
+            async deleteProduct(productId) {
+                if (!confirm('Are you sure you want to delete this product?')) {
+                    return;
+                }
+
+                this.showLoading(true);
+
+                try {
+                    const response = await fetch(`/products/${productId}`, {
+                        method: 'DELETE'
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`Failed to delete product: ${response.status}`);
+                    }
+
+                    this.showMessage('Product deleted successfully!', 'success');
+                    this.loadProducts();
+                } catch (error) {
+                    this.showMessage(`Error deleting product: ${error.message}`, 'error');
+                } finally {
+                    this.showLoading(false);
+                }
+            }
+
+            async loadProducts() {
+                this.showLoading(true);
+                
+                try {
+                    const response = await fetch('/products');
+                    if (!response.ok) {
+                        throw new Error(`Failed to load products: ${response.status}`);
+                    }
+                    
+                    this.products = await response.json();
+                    this.renderProducts();
+                } catch (error) {
+                    this.showMessage(`Error loading products: ${error.message}`, 'error');
+                } finally {
+                    this.showLoading(false);
+                }
+            }
+
+            renderProducts() {
+                const container = document.getElementById('products-grid');
+                
+                if (this.products.length === 0) {
+                    container.innerHTML = `
+                        <div class="empty-state">
+                            <h3>No products yet</h3>
+                            <p>Add your first product using the form above.</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                container.innerHTML = this.products.map(product => `
+                    <div class="product-card">
+                        <h3>${this.escapeHtml(product.name)}</h3>
+                        <p>${this.escapeHtml(product.description || 'No description available')}</p>
+                        <div class="product-id">ID: ${this.escapeHtml(product.id)}</div>
+                        <div class="product-actions">
+                            <button class="btn btn-small" onclick="productStore.editProduct('${product.id}')">
+                                Edit
+                            </button>
+                            <button class="btn btn-danger btn-small" onclick="productStore.deleteProduct('${product.id}')">
+                                Delete
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            editProduct(productId) {
+                const product = this.products.find(p => p.id === productId);
+                if (!product) return;
+
+                this.editingProduct = product;
+                document.getElementById('product-name').value = product.name;
+                document.getElementById('product-description').value = product.description || '';
+                document.getElementById('submit-btn').textContent = 'Update Product';
+                document.getElementById('cancel-btn').style.display = 'inline-block';
+                
+                // Scroll to form
+                document.getElementById('product-form').scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+
+            cancelEdit() {
+                this.editingProduct = null;
+                this.resetForm();
+                document.getElementById('submit-btn').textContent = 'Add Product';
+                document.getElementById('cancel-btn').style.display = 'none';
+            }
+
+            resetForm() {
+                document.getElementById('product-form').reset();
+            }
+
+            showLoading(show) {
+                document.getElementById('loading').style.display = show ? 'block' : 'none';
+            }
+
+            showMessage(message, type) {
+                const container = document.getElementById('message-container');
+                const messageDiv = document.createElement('div');
+                messageDiv.className = type;
+                messageDiv.textContent = message;
+                
+                container.innerHTML = '';
+                container.appendChild(messageDiv);
+
+                // Auto-hide success messages after 3 seconds
+                if (type === 'success') {
+                    setTimeout(() => {
+                        messageDiv.remove();
+                    }, 3000);
+                }
+            }
+
+            escapeHtml(text) {
+                const div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
+            }
+        }
+
+        // Initialize the product store
+        const productStore = new ProductStore();
+    </script>
+</body>
+</html>
