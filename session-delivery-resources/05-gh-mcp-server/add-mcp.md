@@ -1,4 +1,4 @@
-## Demo 4: Create GitHub issues from project documentation using GitHub MCP Server
+## Demo 5: Create GitHub issues from project documentation using GitHub MCP Server
 
 ### Pre-requisites (Checklist) ✅
 

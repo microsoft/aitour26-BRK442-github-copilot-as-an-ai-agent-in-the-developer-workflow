@@ -1,4 +1,4 @@
-## Demo 5: Add a SQLite database to the project
+## Demo 6: Add a SQLite database to the project
 
 <!-- ### Pre-requisites (Checklist) ✅
 
