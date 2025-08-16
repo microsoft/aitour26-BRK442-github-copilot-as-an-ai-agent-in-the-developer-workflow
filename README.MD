@@ -62,14 +62,14 @@ By the end of this session, learners will be able to:
 "/><br />
         <sub><b> Liam Hampton
 </b></sub></a><br />
-            <a href="https://github.com/mikekinsman" title="talk">📢</a> 
+            <a href="https://www.linkedin.com/in/liam-conroy-hampton/" title="talk">📢</a> 
     </td>
     <td align="center"><a href="https://github.com/juliamuiruri4">
         <img src="https://github.com/juliamuiruri4.png" width="100px;" alt="Julia Muiruri
 "/><br />
         <sub><b>Julia Muiruri
 </b></sub></a><br />
-            <a href="https://github.com/mikekinsman" title="talk">📢</a> 
+            <a href="https://www.linkedin.com/in/juliamuiruri/" title="talk">📢</a> 
     </td>
 </tr></table>
 
