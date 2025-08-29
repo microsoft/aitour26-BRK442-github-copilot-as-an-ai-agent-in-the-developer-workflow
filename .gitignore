@@ -425,3 +425,6 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# MkDocs build output
+site/
