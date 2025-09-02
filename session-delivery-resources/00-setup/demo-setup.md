@@ -17,6 +17,15 @@ This document provides comprehensive setup instructions for delivering the **BRK
 
 ## 🔧 Prerequisites & Environment Setup
 
+We strongly reccomend you use a local Codespace instance for the demos as this provides a consistent environment for delivery. If you choose to run the demos locally, please ensure your local environment matches the requirements outlined below.
+
+- [ ] **Codespace setup:** Create a new Codespace on the mainbranch of this repository
+- [ ] **Open in VS Code:** Open the Codespace in Visual Studio Code (locally) using the "Open in VS Code" button in the GitHub web interface
+- [ ] **Wait for post-create script to finish:** This will take a few minutes to complete and sets up the Python environment and installs dependencies
+
+![Open in VS Code](../../img/open-codespace-in-vscode.png)
+![Finish post create script](../../img/wait-for-post-create-to-finish.png)
+
 ### Required Tools
 
 ✅ **Essential Tools**
