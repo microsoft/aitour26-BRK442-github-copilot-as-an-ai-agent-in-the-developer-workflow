@@ -17,9 +17,9 @@ This document provides comprehensive setup instructions for delivering the **BRK
 
 ## 🔧 Prerequisites & Environment Setup
 
-We strongly reccomend you use a local Codespace instance for the demos as this provides a consistent environment for delivery. If you choose to run the demos locally, please ensure your local environment matches the requirements outlined below.
+We strongly recomend you use a local Codespace instance for the demos as this provides a consistent environment for delivery. If you choose to run the demos locally, please ensure your local environment matches the requirements outlined below.
 
-- [ ] **Codespace setup:** Create a new Codespace on the mainbranch of this repository
+- [ ] **Codespace setup:** Create a new Codespace on the main branch of this repository
 - [ ] **Open in VS Code:** Open the Codespace in Visual Studio Code (locally) using the "Open in VS Code" button in the GitHub web interface
 - [ ] **Wait for post-create script to finish:** This will take a few minutes to complete and sets up the Python environment and installs dependencies
 
@@ -78,12 +78,12 @@ These are installed with the setup script when using a local Codespace, but if r
 **Setup Requirements:**
 - [ ] **Note:** This demo uses a recorded demo video for consistency and time efficiency
 - [ ] Ensure the Codeing Agent Pull Request is already created on the repository as this will be needed in future demos
-- [ ] If there is **NO** Pull Request on the repository, assign issue _[Add a User Interface (UI) to the Product Store Demo Application #2](https://github.com/microsoft/aitour26-BRK442-github-copilot-as-an-ai-agent-in-the-developer-workflow/issues/2)_ to the Coding Agent to create a PR (this takes about 15mins to complete so ensure this is done well in advance of the session)
+- [ ] If there is **NO** Pull Request on the repository, assign issue _[Add a User Interface (UI) to the Product Store Demo Application #2](https://github.com/microsoft/aitour26-BRK442-github-copilot-as-an-ai-agent-in-the-developer-workflow/issues/2)_ to the Coding Agent to create a PR (this takes about 15 mins to complete so ensure this is done well in advance of the session)
 
 ### Demo 2: PR Review Process
 **Setup Requirements:**
 - [ ] Open a local Codespace of this repository in VS Code
-- [ ] Ensure the a PR created by the Coding Agent from Demo 1 exists (check with the GitHub extension Pull Request panel)
+- [ ] Ensure the PR created by the Coding Agent from Demo 1 exists (check with the GitHub extension Pull Request panel)
 - [ ] GitHub Pull Request extension properly authenticated
 - [ ] Test the PR review workflow beforehand, but **DO NOT** submit a review before the demo
 
@@ -95,7 +95,7 @@ These are installed with the setup script when using a local Codespace, but if r
 
 ### Demo 4: Agent Mode Testing
 **Setup Requirements:**
-- [ ] App running and available at http://ocalhost:5000 and terminal virtual environment activated with the dependency requirements installed. To test the app is running correctly, go to http://localhost:5000/products and you will see an empty product list
+- [ ] App running and available at http://localhost:5000 and terminal virtual environment activated with the dependency requirements installed. To test the app is running correctly, go to http://localhost:5000/products and you will see an empty product list
 - [ ] `test_app.py` file should be present but **empty**
 - [ ] Custom instructions from Demo 3 should be configured correctly, including the test code templates
 - [ ] Terminal ready to run pytest commands within the virtual environment (venv)
@@ -138,12 +138,6 @@ If running live:
 - [ ] All demo prompts are saved and easily accessible
 
 ## 📋 Demo Delivery Tips
-
-### Timing Management
-- **Total Session Time:** 45 minutes
-- **Introduction:** ~5 minutes (slides 1-6)
-- **Core Demos:** ~35 minutes (slides 7-39)
-- **Wrap-up:** ~5 minutes (slides 40-42)
 
 ### Technical Considerations/Discussions
 1. **Issue Scoping:** GitHub issues need to be well-defined for Coding Agent success
