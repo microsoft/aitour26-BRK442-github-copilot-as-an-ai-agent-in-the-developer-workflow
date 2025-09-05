@@ -14,6 +14,7 @@ Prior to delivering the workshop please:
 | Resources          | Links                            | Description |
 |-------------------|----------------------------------|-------------------|
 | Session Delivery Deck     |  [Deck](https://aka.ms/AAxs9wd) | Presentation slides for this session with presenter notes and embedded demo videos (no-audio) |
+| Full presentation recording | [Recording](http://aka.ms/AAxtwjw) | A recording of the full session delivery |
 | Demo Set up Guide     |  [Demo setup](./00-setup/demo-setup.md) | Guide to set up for the demos |
 
 
