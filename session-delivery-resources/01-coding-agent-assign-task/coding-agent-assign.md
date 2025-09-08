@@ -15,7 +15,7 @@ Use recorded demo video | - Review issue on VS Code using the GitHub Pull Reques
 
 ## Talking points 🎙️
 
-1. Issue must be well-scoped for the coding agent to work effectively
-2. All coding agent steps are captured in the session log
-3. A coding agent run uses 1 premium request
-4. The coding agent takes a few minutes to complete the task, depending on the complexity of the issue
+1. **Issue Scoping:** GitHub issues need to be well-defined for Coding Agent success
+2. **Premium Requests:** Each Coding Agent run uses 1 premium request
+3. **Processing Time:** Coding Agent tasks take several minutes depending on complexity (but are prone to taking much longer)
+4. **Session Logs:** All Coding Agent steps are captured in session logs

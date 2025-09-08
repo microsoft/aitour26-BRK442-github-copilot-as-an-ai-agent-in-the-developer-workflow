@@ -34,3 +34,4 @@ Show screenshots of this working and do not include any actual product names. Ke
 ### Talking points 🎙
 1. Coding agent can be prompted to make changes to the PR (human in the loop)
 2. Now you need to specify in comments by @’ting copilot when you want it to act on the feedback
+3. **Human-in-the-Loop:** Demonstrate how to provide feedback to GitHub Copilot and that all external requests require human review (continue in session/workspace/always allow button in Copilot Chat)

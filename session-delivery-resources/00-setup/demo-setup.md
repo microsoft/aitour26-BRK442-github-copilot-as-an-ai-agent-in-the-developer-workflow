@@ -6,18 +6,19 @@ This document provides comprehensive setup instructions for delivering the **BRK
 
 ## 🎯 Session Overview
 
-| Demo | Description | Duration | Type |
-|------|-------------|----------|------|
-| Demo 1 | [Assign issue to Coding Agent](../01-coding-agent-assign-task/coding-agent-assign.md) | 5 mins | Recorded Video |
-| Demo 2 | [Review PR from Coding Agent](../02-coding-agent-pr-review/coding-agent-prreview.md) | 5 mins | Live Demo |
-| Demo 3 | [Generate Custom Instructions](../03-custom-instructions/custom-instructions.md) | 5 mins | Live Demo |
-| Demo 4 | [Add Tests using Agent Mode](../04-agent-mode-add-tests/add-tests-with-agent-mode.md) | 5 mins | Live Demo |
-| Demo 5 | [GitHub MCP Server Integration](../05-gh-mcp-server/add-mcp.md) | 10 mins | Live Demo |
-| Demo 6 | [Add SQLite Database](../06-db-migration/add-sqldb.md) | 10 mins | Recorded Video |
+| Demo | Description        | Type 
+--------------| --------------- | --------------- |
+| Demo 1 | Assign an issue to the Coding Agent | [Recorded Video](https://aka.ms/AAxrxxv) <br> [Instructions](./01-coding-agent-assign-task/coding-agent-assign.md)
+| Demo 2 | Review the PR from the Coding Agent | [Backup Recording](https://aka.ms/AAxs5hy) <br> [Live Demo](./02-coding-agent-pr-review/coding-agent-prreview.md)
+| Demo 3 | Generate custom instructions  | [Backup Recording](https://aka.ms/AAxrxxu) <br> [Live Demo](./03-custom-instructions/custom-instructions.md)
+| Demo 4 | Add tests using Agent mode | [Backup Recording](https://aka.ms/AAxs5hv) <br> [Live Demo](./04-agent-mode-add-tests/add-tests-with-agent-mode.md)
+| Demo 5 | Create GitHub issues from project documentation using GitHub MCP Server | [Backup Recording](https://aka.ms/AAxs5hw) <br> [Live Demo](./05-gh-mcp-server/add-mcp.md)
+| Demo 6 | Add a SQLite database to the project  | [Recording Video](https://aka.ms/AAxs5hx) <br> [Instructions](./06-db-migration/add-sqldb.md)
+
 
 ## 🔧 Prerequisites & Environment Setup
 
-We strongly recomend you use a local Codespace instance for the demos as this provides a consistent environment for delivery. If you choose to run the demos locally, please ensure your local environment matches the requirements outlined below.
+We strongly recomend you use a Codespace - **via VS Code local**, for the demos as this provides a consistent environment for delivery. If you choose to run the demos locally, please ensure your local environment matches the requirements outlined below.
 
 - [ ] **Codespace setup:** Create a new Codespace on the main branch of this repository
 - [ ] **Open in VS Code:** Open the Codespace in Visual Studio Code (locally) using the "Open in VS Code" button in the GitHub web interface
@@ -45,9 +46,10 @@ We strongly recomend you use a local Codespace instance for the demos as this pr
 ### VS Code Configuration
 
 ✅ **Extensions & Settings**
-- [ ] Ensure GitHub Copilot is signed in and active
-- [ ] Verify Copilot Chat panel is accessible
-- [ ] Check that GitHub Pull Requests extension can access repositories
+- [ ] Local Codespace VS Code instance opens without errors
+- [ ] GitHub Copilot is signed in and active
+- [ ] GitHub Pull Requests extension can access the repository
+- [ ] Python virtual environment activates and installs dependencies successfully within the local Codespace instance without errors
 - [ ] Configure workspace to open the `src` folder for Python demos
 
 ### Python Environment Setup (if running locally) - NOT NEEDED IF USING A CODESPACE FOR THE DEMOS
@@ -79,6 +81,7 @@ These are installed with the setup script when using a local Codespace, but if r
 - [ ] **Note:** This demo uses a recorded demo video for consistency and time efficiency
 - [ ] Ensure the Codeing Agent Pull Request is already created on the repository as this will be needed in future demos
 - [ ] If there is **NO** Pull Request on the repository, assign issue _[Add a User Interface (UI) to the Product Store Demo Application #2](https://github.com/microsoft/aitour26-BRK442-github-copilot-as-an-ai-agent-in-the-developer-workflow/issues/2)_ to the Coding Agent to create a PR (this takes about 15 mins to complete so ensure this is done well in advance of the session)
+- [Demo notes](./01-coding-agent-assign-task/coding-agent-assign.md)
 
 ### Demo 2: PR Review Process
 **Setup Requirements:**
@@ -86,12 +89,14 @@ These are installed with the setup script when using a local Codespace, but if r
 - [ ] Ensure the PR created by the Coding Agent from Demo 1 exists (check with the GitHub extension Pull Request panel)
 - [ ] GitHub Pull Request extension properly authenticated
 - [ ] Test the PR review workflow beforehand, but **DO NOT** submit a review before the demo
+- [Demo notes](./02-coding-agent-pr-review/coding-agent-prreview.md)
 
 ### Demo 3: Custom Instructions
 **Setup Requirements:**
 - [ ] Copilot Chat panel authenticated and accessible
 - [ ] Prepare to demonstrate custom-instruction generation
 - [ ] **Important:** Ensure the generated instructions include specific test code templates found in [Generate Custom Instructions](../03-custom-instructions/custom-instructions.md) 
+- [Demo notes](./03-custom-instructions/custom-instructions.md)
 
 ### Demo 4: Agent Mode Testing
 **Setup Requirements:**
@@ -99,6 +104,7 @@ These are installed with the setup script when using a local Codespace, but if r
 - [ ] `test_app.py` file should be present but **empty**
 - [ ] Custom instructions from Demo 3 should be configured correctly, including the test code templates
 - [ ] Terminal ready to run pytest commands within the virtual environment (venv)
+- [Demo notes](./04-agent-mode-add-tests/add-tests-with-agent-mode.md)
 
 ### Demo 5: MCP Server Integration
 **Setup Requirements:**
@@ -106,6 +112,7 @@ These are installed with the setup script when using a local Codespace, but if r
 - [ ] VS Code extensions panel accessible
 - [ ] Be prepared to authenticate with GitHub during MCP server installation flow
 - [ ] Project documentation available for creating issues in GitHub
+- [Demo notes](./05-gh-mcp-server/add-mcp.md)
 
 ### Demo 6: Database Migration
 **Setup Requirements:**
@@ -115,14 +122,9 @@ If running live:
 - [ ] SQLite development environment ready
 - [ ] SQLite Viewer extension installed into the local VS Code Codespace instance
 - [ ] MS Docs MCP server installed and available for best practice retreival
+- [Demo notes](./06-db-migration/add-sqldb.md)
 
 ## 🚀 Pre-Demo Checklist
-
-### Environment Verification
-- [ ] Local Codespace VS Code instance opens without errors
-- [ ] GitHub Copilot is signed in and active
-- [ ] GitHub Pull Requests extension can access the repository
-- [ ] Python virtual environment activates and installs dependencies successfully within the local Codespace instance without errors
 
 ### Functionality Testing
 - [ ] Copilot Chat responds to test prompts
@@ -137,16 +139,8 @@ If running live:
 - [ ] Fallback plans prepared for live demos (demo recordings are quickly accessible)
 - [ ] All demo prompts are saved and easily accessible
 
-## 📋 Demo Delivery Tips
 
-### Technical Considerations/Discussions
-1. **Issue Scoping:** GitHub issues need to be well-defined for Coding Agent success
-2. **Premium Requests:** Each Coding Agent run uses 1 premium request
-3. **Processing Time:** Coding Agent tasks take several minutes depending on complexity (but are prone to taking much longer)
-4. **Session Logs:** All Coding Agent steps are captured in session logs
-5. **Human-in-the-Loop:** Demonstrate how to provide feedback to GitHub Copilot and that all external requests require human review (continue in session/workspace/always allow button in Copilot Chat)
-
-### Best Practices
+### Delivery Best Practices
 - **Rehearse:** Practice all live demos multiple times
 - **Backup Plans:** Have recorded versions of live demos as fallbacks
 - **Stay Current:** GitHub Copilot UI changes frequently - verify current interface and minor changes to avoid surprises

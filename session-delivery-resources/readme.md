@@ -44,12 +44,4 @@ The workshop is divided into multiple sections including 42 slides and 5 demos
 
 Check out the complete demo setup guide [here](./00-setup/demo-setup.md)
 
-| Demo        | Minutes | Demo Recording 
---------------|------------- | ---------------
-Assign an issue to the Coding Agent <br> [Instructions](./01-coding-agent-assign-task/coding-agent-assign.md) | x | [Recording](https://aka.ms/AAxrxxv)
-Review the PR from the Coding Agent <br> [Instructions](./02-coding-agent-pr-review/coding-agent-prreview.md)  | x | [Recording](https://aka.ms/AAxs5hy)
-Generate custom instructions <br> [Instructions](./03-custom-instructions/custom-instructions.md)  | x | [Recording](https://aka.ms/AAxrxxu)
-Add tests using Agent mode <br> [Instructions](./04-agent-mode-add-tests/add-tests-with-agent-mode.md)  | x | [Recording](https://aka.ms/AAxs5hv)
-Create GitHub issues from project documentation using GitHub MCP Server <br> [Instructions](./05-gh-mcp-server/add-mcp.md) | x | [Recording](https://aka.ms/AAxs5hw)
-Add a SQLite database to the project <br> [Instructions](./06-db-migration/add-sqldb.md)  | x | [Recording](https://aka.ms/AAxs5hx)
 
