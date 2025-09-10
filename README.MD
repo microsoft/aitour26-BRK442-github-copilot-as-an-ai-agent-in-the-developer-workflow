@@ -46,6 +46,10 @@ By the end of this session, learners will be able to:
 | Visual Studio Code | https://www.youtube.com/code | VS Code, the Open Source AI code editor YouTube |
 | Learn at AI Tour | https://aka.ms/LearnAtAITour | Continue learning on Microsoft Learn |
 
+### 🌐 Multi-Language Support
+
+Additional Languages Coming Soon
+
 ## Content Owners
 
 <!-- TODO: Add yourself as a content owner
