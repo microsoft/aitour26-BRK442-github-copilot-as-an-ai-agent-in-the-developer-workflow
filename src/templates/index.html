@@ -269,6 +269,19 @@
                 this.cancelBtn.addEventListener('click', () => this.cancelEdit());
             }
 
+            bindProductEvents() {
+                // Use event delegation for dynamically created buttons
+                this.productGrid.addEventListener('click', (e) => {
+                    if (e.target.classList.contains('edit-btn')) {
+                        const productId = e.target.getAttribute('data-id');
+                        this.editProduct(productId);
+                    } else if (e.target.classList.contains('delete-btn')) {
+                        const productId = e.target.getAttribute('data-id');
+                        this.deleteProduct(productId);
+                    }
+                });
+            }
+
             async loadProducts() {
                 try {
                     this.showLoading();
@@ -289,17 +302,18 @@
                     this.productGrid.innerHTML = '<div class="loading">No products found. Add your first product above!</div>';
                 } else {
                     this.productGrid.innerHTML = this.products.map(product => `
-                        <div class="product-card" data-id="${product.id}">
+                        <div class="product-card" data-id="${this.escapeHtml(product.id)}">
                             <div class="product-name">${this.escapeHtml(product.name)}</div>
                             <div class="product-description">${this.escapeHtml(product.description || 'No description')}</div>
                             <div class="product-actions">
-                                <button class="btn btn-warning" onclick="productStore.editProduct('${product.id}')">Edit</button>
-                                <button class="btn btn-danger" onclick="productStore.deleteProduct('${product.id}')">Delete</button>
+                                <button class="btn btn-warning edit-btn" data-id="${this.escapeHtml(product.id)}">Edit</button>
+                                <button class="btn btn-danger delete-btn" data-id="${this.escapeHtml(product.id)}">Delete</button>
                             </div>
                         </div>
                     `).join('');
                 }
                 this.productGrid.classList.remove('hidden');
+                this.bindProductEvents();
             }
 
             async handleSubmit(e) {
