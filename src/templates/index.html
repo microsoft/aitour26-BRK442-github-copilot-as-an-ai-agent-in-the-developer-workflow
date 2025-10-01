@@ -55,7 +55,7 @@
             font-weight: 500;
         }
 
-        input, textarea {
+        input, textarea, select {
             width: 100%;
             padding: 0.75rem;
             border: 1px solid #ddd;
@@ -137,6 +137,16 @@
             color: #666;
             margin-bottom: 1rem;
             min-height: 40px;
+        }
+
+        .product-category {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.875rem;
+            margin-bottom: 0.75rem;
         }
 
         .product-actions {
@@ -227,6 +237,21 @@
                     <label for="product-description">Description</label>
                     <textarea id="product-description" name="description" placeholder="Enter product description"></textarea>
                 </div>
+                <div class="form-group">
+                    <label for="product-category">Category</label>
+                    <select id="product-category" name="category">
+                        <option value="">Select a category</option>
+                        <option value="Electrical">Electrical</option>
+                        <option value="Garden & Outdoor">Garden & Outdoor</option>
+                        <option value="Hand tools">Hand tools</option>
+                        <option value="Hardware">Hardware</option>
+                        <option value="Lumber & Building materials">Lumber & Building materials</option>
+                        <option value="Paint & Finishes">Paint & Finishes</option>
+                        <option value="Plumbing">Plumbing</option>
+                        <option value="Power tools">Power tools</option>
+                        <option value="Storage & organization">Storage & organization</option>
+                    </select>
+                </div>
                 <div class="form-buttons">
                     <button type="submit" class="btn" id="submit-btn">Add Product</button>
                     <button type="button" class="btn btn-warning hidden" id="cancel-btn">Cancel</button>
@@ -249,6 +274,7 @@
                 this.form = document.getElementById('product-form');
                 this.nameInput = document.getElementById('product-name');
                 this.descriptionInput = document.getElementById('product-description');
+                this.categoryInput = document.getElementById('product-category');
                 this.submitBtn = document.getElementById('submit-btn');
                 this.cancelBtn = document.getElementById('cancel-btn');
                 this.formTitle = document.getElementById('form-title');
@@ -304,6 +330,7 @@
                     this.productGrid.innerHTML = this.products.map(product => `
                         <div class="product-card" data-id="${this.escapeHtml(product.id)}">
                             <div class="product-name">${this.escapeHtml(product.name)}</div>
+                            ${product.category ? `<div class="product-category">${this.escapeHtml(product.category)}</div>` : ''}
                             <div class="product-description">${this.escapeHtml(product.description || 'No description')}</div>
                             <div class="product-actions">
                                 <button class="btn btn-warning edit-btn" data-id="${this.escapeHtml(product.id)}">Edit</button>
@@ -321,6 +348,7 @@
                 
                 const name = this.nameInput.value.trim();
                 const description = this.descriptionInput.value.trim();
+                const category = this.categoryInput.value;
 
                 if (!name) {
                     this.showError('Product name is required');
@@ -329,10 +357,10 @@
 
                 try {
                     if (this.editingId) {
-                        await this.updateProduct(this.editingId, { name, description });
+                        await this.updateProduct(this.editingId, { name, description, category });
                         this.showSuccess('Product updated successfully');
                     } else {
-                        await this.createProduct({ name, description });
+                        await this.createProduct({ name, description, category });
                         this.showSuccess('Product added successfully');
                     }
                     
@@ -405,6 +433,7 @@
                 this.editingId = id;
                 this.nameInput.value = product.name;
                 this.descriptionInput.value = product.description || '';
+                this.categoryInput.value = product.category || '';
                 
                 this.formTitle.textContent = 'Edit Product';
                 this.submitBtn.textContent = 'Update Product';
