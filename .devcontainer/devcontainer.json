@@ -17,5 +17,8 @@
 	"remoteEnv": {
 		"VIRTUAL_ENV": "${containerWorkspaceFolder}/.venv",
 		"PATH": "${containerWorkspaceFolder}/.venv/bin:${localEnv:PATH}"
+	},
+	"postAttachCommand": {
+		"server": "source .venv/bin/activate && python src/app.py"
 	}
 }
