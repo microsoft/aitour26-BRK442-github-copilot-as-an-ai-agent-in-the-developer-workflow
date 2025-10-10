@@ -135,12 +135,6 @@ python app.py  # Starts on localhost:5000 by default
 pytest                    # Run unit tests
 python -m pytest test_   # Run specific test pattern
 ```
- 
-### When Working with Tests
-- Unit tests should use Flask test client, not real HTTP calls
-- E2E tests run on port 5001 to avoid conflicts with dev server
-- Always clean up browser instances in E2E tests
-
 
 ### Testing Best Practices
 - Unit tests should use Flask test client, not real HTTP calls
