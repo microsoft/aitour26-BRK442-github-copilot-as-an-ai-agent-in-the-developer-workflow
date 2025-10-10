@@ -2,13 +2,13 @@
 
 ### Pre-requisites (Checklist) ✅
 
-- [ ] Open the `src` folder in VS Code
+- [ ] Open the `src` folder in VS Code to view the application code
 
 ### Demo Steps 🗒
 
 Delivery style (Recommended) | Demo Description 
 --------------|------------- 
-Do it live | - Open the Copilot chat window in VS Code <br> - Click on the settings wheel in the chat window <br> - Select "Instructions" from the menu <br> - Click on "Generate instructions" to create a new set of custom instructions <br> - Once generated, review the generated isntructions file and talk about the importance of providing this to copilot <br> - You can edit the instructions file manually
+Do it live | - Create a new file called `AGENTS.md` in the root project directory <br> - Add the file contents outlined below to the file <br> - Explain that this file serves as custom instructions for GitHub Copilot when working on this project <br> - Highlight the testing patterns and application overview sections <br> - Show how Copilot will reference this file with a test prompt "List all of the API endpoints" and explain that it automatically pulls in the file for context (shown in the Copilot chat window)
 
 ### Talking points 🎙
 
@@ -18,14 +18,41 @@ Do it live | - Open the Copilot chat window in VS Code <br> - Click on the setti
 
 ---
 
-### Copilot will create your custom instructions live but you must ensure the newly created file content contains the following code sample for the following test demo to work every time:
- 
-### Testing Strategy
+### Use the following file contents and add it to your AGENTS.md file upon creation. Explain the contents, including the test pattern as part of the demo ⬇️:
+
+# Application Overview and Testing Guide
+
+## Application Overview
+
+This is a Flask-based REST API for product management with CRUD operations.
+
+The application code is in the directory `./src` so when asked questions relating to the application, only reference the files within this directory.
+
+### Technology Stack
+- **Language**: Python
+- **Framework**: Flask
+- **Testing**: pytest, Selenium
+
+### API Endpoints
+- `GET /products` - List all products
+- `GET /products/<product_id>` - Get specific product
+- `POST /products` - Create new product
+- `PUT /products/<product_id>` - Update product
+- `DELETE /products/<product_id>` - Delete product
+
+## Running the Application
+
+```bash
+python app.py  # Starts on localhost:5000 by default
+```
+
+## Testing Strategy
+
 - **Unit tests**: Use pytest with Flask test client fixture. Use the the test code examples form this file
 - **E2E tests**: Selenium with Chrome driver on port 5001
 - Run Flask app in daemon thread for E2E testing
  
-When I ask copilot to write some unit tests. Use thecode below and add it to the "test_app.py" file.
+When I ask copilot to write some unit tests. Use the code test pattern below and add it to the "test_app.py" file.
  
 Unit tests:
 ```python
@@ -110,7 +137,12 @@ python -m pytest test_   # Run specific test pattern
 ```
  
 ### When Working with Tests
-- Use the test patterns in `.vscode/docs.md` as templates
+- Unit tests should use Flask test client, not real HTTP calls
+- E2E tests run on port 5001 to avoid conflicts with dev server
+- Always clean up browser instances in E2E tests
+
+
+### Testing Best Practices
 - Unit tests should use Flask test client, not real HTTP calls
 - E2E tests run on port 5001 to avoid conflicts with dev server
 - Always clean up browser instances in E2E tests

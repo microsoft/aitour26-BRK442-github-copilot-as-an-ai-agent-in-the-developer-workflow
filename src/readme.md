@@ -87,29 +87,6 @@ az deployment group create --template-file infra/main.bicep --resource-group <yo
     └── index.html        # Frontend HTML template
 ```
 
-## TODO List
-
-### Testing & Quality Assurance
-- [ ] **Add End-to-End Integration Tests**: Implement Selenium-based E2E tests to verify full user workflows
-- [ ] **Add Code Coverage Reporting**: Implement coverage tracking and reporting
-- [ ] **Add Linting and Code Quality**: Set up flake8, black, and other code quality tools
-
-### Data Persistence
-- [ ] **Replace In-Memory Storage**: Implement persistent database storage
-  - [ ] **Add SQLite Support**: For local development
-  - [ ] **Add Azure SQL Database**: For production deployment
-  - [ ] **Add Database Migrations**: Handle schema changes
-
-### Frontend Improvements
-- [ ] **Modernize Frontend**: Upgrade to React, Vue, or Angular
-- [ ] **Add Error Handling**: Better error messages and user feedback
-- [ ] **Add Confirmation Dialogs**: Confirm destructive actions like delete
-
-### Infrastructure & DevOps
-- [ ] **Add CI/CD Pipeline**: Automated testing and deployment
-- [ ] **Add Health Checks**: Endpoint for monitoring application health
-- [ ] **Add Container Support**: Dockerize the application
-
 ## Contributing
 1. Fork the repository
 2. Create a feature branch
