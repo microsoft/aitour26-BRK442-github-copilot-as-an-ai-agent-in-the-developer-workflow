@@ -363,19 +363,27 @@
             }
 
             const html = products.map(product => `
-                <div class="product-item" data-id="${product.id}">
+                <div class="product-item" data-id="${escapeHtml(product.id)}">
                     <div class="product-info">
                         <div class="product-name">${escapeHtml(product.name)}</div>
                         <div class="product-description">${escapeHtml(product.description || 'No description')}</div>
                     </div>
                     <div class="product-actions">
-                        <button class="btn btn-edit" onclick="editProduct('${product.id}')" aria-label="Edit ${escapeHtml(product.name)}">Edit</button>
-                        <button class="btn btn-danger" onclick="deleteProduct('${product.id}')" aria-label="Delete ${escapeHtml(product.name)}">Delete</button>
+                        <button class="btn btn-edit" data-action="edit" data-product-id="${escapeHtml(product.id)}" aria-label="Edit ${escapeHtml(product.name)}">Edit</button>
+                        <button class="btn btn-danger" data-action="delete" data-product-id="${escapeHtml(product.id)}" aria-label="Delete ${escapeHtml(product.name)}">Delete</button>
                     </div>
                 </div>
             `).join('');
 
             productListContent.innerHTML = html;
+
+            // Attach event listeners using event delegation
+            productListContent.querySelectorAll('[data-action="edit"]').forEach(btn => {
+                btn.addEventListener('click', () => editProduct(btn.dataset.productId));
+            });
+            productListContent.querySelectorAll('[data-action="delete"]').forEach(btn => {
+                btn.addEventListener('click', () => deleteProduct(btn.dataset.productId));
+            });
         }
 
         // Escape HTML to prevent XSS
