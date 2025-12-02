@@ -441,6 +441,7 @@
 
         // Escape HTML to prevent XSS
         function escapeHtml(text) {
+            if (text == null) return '';
             const div = document.createElement('div');
             div.textContent = text;
             return div.innerHTML;
@@ -554,9 +555,13 @@
             }
         });
 
+        // Track the element that triggered the modal for focus management
+        let lastFocusedElement = null;
+
         // Handle edit button click
         function handleEdit(e) {
             const btn = e.target;
+            lastFocusedElement = btn;
             const id = btn.dataset.id;
             const name = btn.dataset.name;
             const description = btn.dataset.description;
@@ -630,6 +635,10 @@
         // Close edit modal
         function closeEditModal() {
             editModal.classList.add('hidden');
+            if (lastFocusedElement && document.body.contains(lastFocusedElement)) {
+                lastFocusedElement.focus();
+            }
+            lastFocusedElement = null;
         }
 
         cancelEditBtn.addEventListener('click', closeEditModal);
