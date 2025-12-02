@@ -28,7 +28,12 @@ def create_product():
     if not body or 'name' not in body:
         abort(400)
     product_id = str(uuid4())
-    product = {'id': product_id, 'name': body['name'], 'description': body.get('description', '')}
+    product = {
+        'id': product_id,
+        'name': body['name'],
+        'category': body.get('category', ''),
+        'description': body.get('description', '')
+    }
     data[product_id] = product
     return jsonify(product), 201
 
@@ -39,7 +44,11 @@ def update_product(product_id):
     body = request.get_json()
     if not body or 'name' not in body:
         abort(400)
-    data[product_id].update({'name': body['name'], 'description': body.get('description', '')})
+    data[product_id].update({
+        'name': body['name'],
+        'category': body.get('category', ''),
+        'description': body.get('description', '')
+    })
     return jsonify(data[product_id]), 200
 
 @app.route('/products/<product_id>', methods=['DELETE'])

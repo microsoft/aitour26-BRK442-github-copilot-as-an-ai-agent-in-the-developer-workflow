@@ -91,7 +91,8 @@
         }
 
         .form-group input,
-        .form-group textarea {
+        .form-group textarea,
+        .form-group select {
             width: 100%;
             padding: 12px;
             border: 1px solid var(--border-color);
@@ -102,10 +103,16 @@
         }
 
         .form-group input:focus,
-        .form-group textarea:focus {
+        .form-group textarea:focus,
+        .form-group select:focus {
             outline: none;
             border-color: var(--primary-color);
             box-shadow: 0 0 0 3px rgba(0, 120, 212, 0.1);
+        }
+
+        .form-group select {
+            background-color: white;
+            cursor: pointer;
         }
 
         .form-group textarea {
@@ -209,6 +216,13 @@
         .product-description {
             color: #666;
             font-size: 0.9rem;
+        }
+
+        .product-category {
+            color: #888;
+            font-size: 0.85rem;
+            margin-top: 4px;
+            font-style: italic;
         }
 
         .product-actions {
@@ -368,6 +382,21 @@
                         >
                     </div>
                     <div class="form-group">
+                        <label for="product-category">Category</label>
+                        <select id="product-category" name="category">
+                            <option value="">Select a category</option>
+                            <option value="Electrical">Electrical</option>
+                            <option value="Garden & Outdoor">Garden & Outdoor</option>
+                            <option value="Hand tools">Hand tools</option>
+                            <option value="Hardware">Hardware</option>
+                            <option value="Lumber & Building materials">Lumber & Building materials</option>
+                            <option value="Paint & Finishes">Paint & Finishes</option>
+                            <option value="Plumbing">Plumbing</option>
+                            <option value="Power tools">Power tools</option>
+                            <option value="Storage & organization">Storage & organization</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label for="product-description">Description</label>
                         <textarea 
                             id="product-description" 
@@ -406,6 +435,21 @@
                         required 
                         aria-required="true"
                     >
+                </div>
+                <div class="form-group">
+                    <label for="edit-product-category">Category</label>
+                    <select id="edit-product-category" name="category">
+                        <option value="">Select a category</option>
+                        <option value="Electrical">Electrical</option>
+                        <option value="Garden & Outdoor">Garden & Outdoor</option>
+                        <option value="Hand tools">Hand tools</option>
+                        <option value="Hardware">Hardware</option>
+                        <option value="Lumber & Building materials">Lumber & Building materials</option>
+                        <option value="Paint & Finishes">Paint & Finishes</option>
+                        <option value="Plumbing">Plumbing</option>
+                        <option value="Power tools">Power tools</option>
+                        <option value="Storage & organization">Storage & organization</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="edit-product-description">Description</label>
@@ -483,12 +527,14 @@
                             <div class="product-info">
                                 <div class="product-name">${escapeHtml(product.name)}</div>
                                 <div class="product-description">${escapeHtml(product.description || 'No description')}</div>
+                                ${product.category ? `<div class="product-category">Category: ${escapeHtml(product.category)}</div>` : ''}
                             </div>
                             <div class="product-actions">
                                 <button 
                                     class="btn btn-primary btn-sm edit-btn" 
                                     data-id="${escapeHtml(product.id)}"
                                     data-name="${escapeHtml(product.name)}"
+                                    data-category="${escapeHtml(product.category || '')}"
                                     data-description="${escapeHtml(product.description || '')}"
                                     aria-label="Edit ${escapeHtml(product.name)}"
                                 >
@@ -527,6 +573,7 @@
             e.preventDefault();
             
             const name = document.getElementById('product-name').value.trim();
+            const category = document.getElementById('product-category').value;
             const description = document.getElementById('product-description').value.trim();
             
             if (!name) {
@@ -540,7 +587,7 @@
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ name, description })
+                    body: JSON.stringify({ name, category, description })
                 });
                 
                 if (!response.ok) {
@@ -564,10 +611,12 @@
             lastFocusedElement = btn;
             const id = btn.dataset.id;
             const name = btn.dataset.name;
+            const category = btn.dataset.category;
             const description = btn.dataset.description;
             
             document.getElementById('edit-product-id').value = id;
             document.getElementById('edit-product-name').value = name;
+            document.getElementById('edit-product-category').value = category || '';
             document.getElementById('edit-product-description').value = description;
             
             editModal.classList.remove('hidden');
@@ -580,6 +629,7 @@
             
             const id = document.getElementById('edit-product-id').value;
             const name = document.getElementById('edit-product-name').value.trim();
+            const category = document.getElementById('edit-product-category').value;
             const description = document.getElementById('edit-product-description').value.trim();
             
             if (!name) {
@@ -593,7 +643,7 @@
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ name, description })
+                    body: JSON.stringify({ name, category, description })
                 });
                 
                 if (!response.ok) {
