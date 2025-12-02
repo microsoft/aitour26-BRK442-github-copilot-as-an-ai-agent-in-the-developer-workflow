@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Store</title>
+    <style>
+        :root {
+            --primary-color: #0078d4;
+            --primary-hover: #106ebe;
+            --danger-color: #d32f2f;
+            --danger-hover: #b71c1c;
+            --success-color: #388e3c;
+            --background-color: #f5f5f5;
+            --card-background: #ffffff;
+            --text-color: #333333;
+            --border-color: #e0e0e0;
+            --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px 0;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        header h1 {
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        @media (min-width: 768px) {
+            .main-content {
+                grid-template-columns: 350px 1fr;
+            }
+        }
+
+        .card {
+            background-color: var(--card-background);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            padding: 24px;
+        }
+
+        .card h2 {
+            font-size: 1.25rem;
+            margin-bottom: 20px;
+            color: var(--text-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(0, 120, 212, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+            text-align: center;
+        }
+
+        .btn:active {
+            transform: translateY(1px);
+        }
+
+        .btn:focus {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .btn-danger {
+            background-color: var(--danger-color);
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background-color: var(--danger-hover);
+        }
+
+        .btn-secondary {
+            background-color: #757575;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: #616161;
+        }
+
+        .btn-block {
+            width: 100%;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-sm {
+            padding: 8px 16px;
+            font-size: 0.875rem;
+        }
+
+        .product-list {
+            list-style: none;
+        }
+
+        .product-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            margin-bottom: 12px;
+            transition: box-shadow 0.2s;
+        }
+
+        .product-item:hover {
+            box-shadow: var(--shadow);
+        }
+
+        .product-info {
+            flex: 1;
+            margin-right: 16px;
+        }
+
+        .product-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+            color: var(--text-color);
+        }
+
+        .product-description {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .loading::after {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--primary-color);
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .error {
+            background-color: #ffebee;
+            color: var(--danger-color);
+            padding: 16px;
+            border-radius: 4px;
+            margin-bottom: 16px;
+            border: 1px solid var(--danger-color);
+        }
+
+        .success {
+            background-color: #e8f5e9;
+            color: var(--success-color);
+            padding: 16px;
+            border-radius: 4px;
+            margin-bottom: 16px;
+            border: 1px solid var(--success-color);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .empty-state p {
+            margin-bottom: 8px;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Modal styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .modal {
+            background-color: var(--card-background);
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            padding: 24px;
+            width: 100%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal h2 {
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 480px) {
+            .product-item {
+                flex-direction: column;
+            }
+            
+            .product-info {
+                margin-right: 0;
+                margin-bottom: 12px;
+            }
+            
+            .product-actions {
+                width: 100%;
+            }
+            
+            .product-actions .btn {
+                flex: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Product Store</h1>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="main-content">
+            <!-- Add Product Form -->
+            <section class="card" aria-labelledby="add-product-heading">
+                <h2 id="add-product-heading">Add New Product</h2>
+                <form id="add-product-form" aria-describedby="form-status">
+                    <div class="form-group">
+                        <label for="product-name">Product Name <span aria-hidden="true">*</span></label>
+                        <input 
+                            type="text" 
+                            id="product-name" 
+                            name="name" 
+                            required 
+                            aria-required="true"
+                            placeholder="Enter product name"
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label for="product-description">Description</label>
+                        <textarea 
+                            id="product-description" 
+                            name="description" 
+                            placeholder="Enter product description"
+                        ></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Add Product</button>
+                </form>
+                <div id="form-status" class="sr-only" aria-live="polite"></div>
+            </section>
+
+            <!-- Product List -->
+            <section class="card" aria-labelledby="product-list-heading">
+                <h2 id="product-list-heading">Products</h2>
+                <div id="message-container" aria-live="polite"></div>
+                <div id="products-container">
+                    <div class="loading" role="status">Loading products...</div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Edit Modal -->
+    <div id="edit-modal" class="modal-overlay hidden" role="dialog" aria-labelledby="edit-modal-heading" aria-modal="true">
+        <div class="modal">
+            <h2 id="edit-modal-heading">Edit Product</h2>
+            <form id="edit-product-form">
+                <input type="hidden" id="edit-product-id">
+                <div class="form-group">
+                    <label for="edit-product-name">Product Name <span aria-hidden="true">*</span></label>
+                    <input 
+                        type="text" 
+                        id="edit-product-name" 
+                        name="name" 
+                        required 
+                        aria-required="true"
+                    >
+                </div>
+                <div class="form-group">
+                    <label for="edit-product-description">Description</label>
+                    <textarea 
+                        id="edit-product-description" 
+                        name="description"
+                    ></textarea>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" id="cancel-edit">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = '/products';
+        const productsContainer = document.getElementById('products-container');
+        const messageContainer = document.getElementById('message-container');
+        const addProductForm = document.getElementById('add-product-form');
+        const editModal = document.getElementById('edit-modal');
+        const editProductForm = document.getElementById('edit-product-form');
+        const cancelEditBtn = document.getElementById('cancel-edit');
+
+        // Show message
+        function showMessage(message, isError = false) {
+            messageContainer.innerHTML = `<div class="${isError ? 'error' : 'success'}" role="alert">${escapeHtml(message)}</div>`;
+            setTimeout(() => {
+                messageContainer.innerHTML = '';
+            }, 5000);
+        }
+
+        // Escape HTML to prevent XSS
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Fetch and display products
+        async function loadProducts() {
+            productsContainer.innerHTML = '<div class="loading" role="status">Loading products...</div>';
+            
+            try {
+                const response = await fetch(API_BASE);
+                if (!response.ok) {
+                    throw new Error('Failed to load products');
+                }
+                
+                const products = await response.json();
+                renderProducts(products);
+            } catch (error) {
+                productsContainer.innerHTML = `<div class="error" role="alert">Error loading products: ${escapeHtml(error.message)}</div>`;
+            }
+        }
+
+        // Render product list
+        function renderProducts(products) {
+            if (products.length === 0) {
+                productsContainer.innerHTML = `
+                    <div class="empty-state">
+                        <p>No products found.</p>
+                        <p>Add your first product using the form.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            const listHtml = `
+                <ul class="product-list" role="list" aria-label="Product list">
+                    ${products.map(product => `
+                        <li class="product-item" data-id="${escapeHtml(product.id)}">
+                            <div class="product-info">
+                                <div class="product-name">${escapeHtml(product.name)}</div>
+                                <div class="product-description">${escapeHtml(product.description || 'No description')}</div>
+                            </div>
+                            <div class="product-actions">
+                                <button 
+                                    class="btn btn-primary btn-sm edit-btn" 
+                                    data-id="${escapeHtml(product.id)}"
+                                    data-name="${escapeHtml(product.name)}"
+                                    data-description="${escapeHtml(product.description || '')}"
+                                    aria-label="Edit ${escapeHtml(product.name)}"
+                                >
+                                    Edit
+                                </button>
+                                <button 
+                                    class="btn btn-danger btn-sm delete-btn" 
+                                    data-id="${escapeHtml(product.id)}"
+                                    aria-label="Delete ${escapeHtml(product.name)}"
+                                >
+                                    Delete
+                                </button>
+                            </div>
+                        </li>
+                    `).join('')}
+                </ul>
+            `;
+            
+            productsContainer.innerHTML = listHtml;
+            attachEventListeners();
+        }
+
+        // Attach event listeners to edit and delete buttons
+        function attachEventListeners() {
+            document.querySelectorAll('.edit-btn').forEach(btn => {
+                btn.addEventListener('click', handleEdit);
+            });
+            
+            document.querySelectorAll('.delete-btn').forEach(btn => {
+                btn.addEventListener('click', handleDelete);
+            });
+        }
+
+        // Handle add product
+        addProductForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('product-name').value.trim();
+            const description = document.getElementById('product-description').value.trim();
+            
+            if (!name) {
+                showMessage('Product name is required', true);
+                return;
+            }
+            
+            try {
+                const response = await fetch(API_BASE, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ name, description })
+                });
+                
+                if (!response.ok) {
+                    throw new Error('Failed to add product');
+                }
+                
+                addProductForm.reset();
+                showMessage('Product added successfully');
+                loadProducts();
+            } catch (error) {
+                showMessage(`Error adding product: ${error.message}`, true);
+            }
+        });
+
+        // Handle edit button click
+        function handleEdit(e) {
+            const btn = e.target;
+            const id = btn.dataset.id;
+            const name = btn.dataset.name;
+            const description = btn.dataset.description;
+            
+            document.getElementById('edit-product-id').value = id;
+            document.getElementById('edit-product-name').value = name;
+            document.getElementById('edit-product-description').value = description;
+            
+            editModal.classList.remove('hidden');
+            document.getElementById('edit-product-name').focus();
+        }
+
+        // Handle edit form submit
+        editProductForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const id = document.getElementById('edit-product-id').value;
+            const name = document.getElementById('edit-product-name').value.trim();
+            const description = document.getElementById('edit-product-description').value.trim();
+            
+            if (!name) {
+                showMessage('Product name is required', true);
+                return;
+            }
+            
+            try {
+                const response = await fetch(`${API_BASE}/${id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ name, description })
+                });
+                
+                if (!response.ok) {
+                    throw new Error('Failed to update product');
+                }
+                
+                closeEditModal();
+                showMessage('Product updated successfully');
+                loadProducts();
+            } catch (error) {
+                showMessage(`Error updating product: ${error.message}`, true);
+            }
+        });
+
+        // Handle delete
+        async function handleDelete(e) {
+            const id = e.target.dataset.id;
+            
+            if (!confirm('Are you sure you want to delete this product?')) {
+                return;
+            }
+            
+            try {
+                const response = await fetch(`${API_BASE}/${id}`, {
+                    method: 'DELETE'
+                });
+                
+                if (!response.ok) {
+                    throw new Error('Failed to delete product');
+                }
+                
+                showMessage('Product deleted successfully');
+                loadProducts();
+            } catch (error) {
+                showMessage(`Error deleting product: ${error.message}`, true);
+            }
+        }
+
+        // Close edit modal
+        function closeEditModal() {
+            editModal.classList.add('hidden');
+        }
+
+        cancelEditBtn.addEventListener('click', closeEditModal);
+
+        // Close modal on overlay click
+        editModal.addEventListener('click', (e) => {
+            if (e.target === editModal) {
+                closeEditModal();
+            }
+        });
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !editModal.classList.contains('hidden')) {
+                closeEditModal();
+            }
+        });
+
+        // Initial load
+        loadProducts();
+    </script>
+</body>
+</html>
