@@ -80,7 +80,8 @@ section h2 {
 }
 
 .form-group input,
-.form-group textarea {
+.form-group textarea,
+.form-group select {
     width: 100%;
     padding: 12px;
     border: 2px solid #ddd;
@@ -91,7 +92,8 @@ section h2 {
 }
 
 .form-group input:focus,
-.form-group textarea:focus {
+.form-group textarea:focus,
+.form-group select:focus {
     outline: none;
     border-color: #667eea;
 }
@@ -182,6 +184,18 @@ section h2 {
     font-size: 1.3rem;
     margin-bottom: 10px;
     color: #333;
+}
+
+.product-card .product-category {
+    display: inline-block;
+    background: #667eea;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+    min-height: auto;
 }
 
 .product-card p {

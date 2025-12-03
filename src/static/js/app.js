@@ -94,10 +94,12 @@ function displayProducts(products) {
         const escapedId = escapeHtml(product.id);
         const escapedName = escapeHtml(product.name);
         const escapedDescription = escapeHtml(product.description || 'No description');
+        const escapedCategory = escapeHtml(product.category || 'Uncategorized');
         
         return `
             <div class="product-card" data-id="${escapedId}">
                 <h3>${escapedName}</h3>
+                <p class="product-category">${escapedCategory}</p>
                 <p>${escapedDescription}</p>
                 <div class="product-card-actions">
                     <button class="btn btn-edit" data-action="edit" data-id="${escapedId}" aria-label="Edit ${escapedName}">
@@ -119,7 +121,8 @@ async function handleAddProduct(e) {
     const formData = new FormData(productForm);
     const product = {
         name: formData.get('name'),
-        description: formData.get('description')
+        description: formData.get('description'),
+        category: formData.get('category')
     };
 
     try {
@@ -157,6 +160,7 @@ async function openEditModal(productId) {
         document.getElementById('edit-product-id').value = product.id;
         document.getElementById('edit-product-name').value = product.name;
         document.getElementById('edit-product-description').value = product.description || '';
+        document.getElementById('edit-product-category').value = product.category || '';
         
         editModal.classList.add('show');
         document.getElementById('edit-product-name').focus();
@@ -180,7 +184,8 @@ async function handleUpdateProduct(e) {
     const formData = new FormData(editForm);
     const product = {
         name: formData.get('name'),
-        description: formData.get('description')
+        description: formData.get('description'),
+        category: formData.get('category')
     };
 
     try {
