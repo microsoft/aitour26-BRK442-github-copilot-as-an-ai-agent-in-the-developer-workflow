@@ -18,10 +18,12 @@ A simple Flask-based product store API with in-memory storage and a basic HTML f
 - **JSON Validation**: Request body validation for required fields
 
 ### Frontend
-- **Single Page Application**: Basic HTML interface with vanilla JavaScript
-- **Product Display**: Dynamic product list rendering
+- **Single Page Application**: Modern HTML interface with vanilla JavaScript
+- **Product Display**: Dynamic product list with card-based layout
 - **CRUD Operations**: Add, edit, and delete products through the UI
-- **Responsive Design**: Clean, simple interface for product management
+- **Responsive Design**: Mobile-first responsive design that works on all devices
+- **Accessibility**: WCAG compliant with proper ARIA labels and semantic HTML
+- **User Feedback**: Success messages, error handling, and loading states
 
 ### Infrastructure
 - **Azure Ready**: Bicep template for Azure App Service deployment
@@ -42,7 +44,7 @@ A simple Flask-based product store API with in-memory storage and a basic HTML f
 
 ### Prerequisites
 - Python 3.7+
-- Flask
+- Flask and Flask-CORS
 - Azure CLI (for deployment)
 
 ### Installation
@@ -64,6 +66,12 @@ A simple Flask-based product store API with in-memory storage and a basic HTML f
 
 4. Open your browser and navigate to `http://localhost:5000`
 
+The web interface provides:
+- A form to add new products
+- A grid display of all products
+- Edit and delete buttons for each product
+- Responsive design that works on mobile and desktop
+
 ### Testing
 Run unit tests:
 ```bash
@@ -78,13 +86,18 @@ az deployment group create --template-file infra/main.bicep --resource-group <yo
 
 ## Project Structure
 ```
-├── app.py                 # Main Flask application
+├── app.py                 # Main Flask application with API endpoints
 ├── requirements.txt       # Python dependencies
 ├── test_app.py           # Unit tests
-├── infra/
-│   └── main.bicep        # Azure infrastructure template
-└── templates/
-    └── index.html        # Frontend HTML template
+├── templates/
+│   └── index.html        # Frontend HTML template
+├── static/
+│   ├── css/
+│   │   └── style.css     # Responsive CSS styles
+│   └── js/
+│       └── app.js        # Frontend JavaScript for CRUD operations
+└── infra/
+    └── main.bicep        # Azure infrastructure template
 ```
 
 ## Contributing
