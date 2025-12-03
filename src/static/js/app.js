@@ -207,8 +207,9 @@ async function handleUpdateProduct(e) {
 
 // Show delete confirmation
 function showDeleteConfirmation(productId) {
-    // Find the product card and get the product name for a more informative confirmation
-    const productCard = productsList.querySelector(`[data-id="${productId}"]`);
+    // Find the product card using a safer approach
+    const productCards = Array.from(productsList.querySelectorAll('.product-card'));
+    const productCard = productCards.find(card => card.dataset.id === productId);
     const productName = productCard?.querySelector('h3')?.textContent || 'this product';
     
     if (confirm(`Are you sure you want to delete "${productName}"? This action cannot be undone.`)) {
