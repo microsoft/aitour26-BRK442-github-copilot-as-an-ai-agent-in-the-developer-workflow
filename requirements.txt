@@ -1,6 +1,7 @@
 # Documentation
 mkdocs-material
 Flask
+Flask-CORS
 SQLAlchemy>=1.4.0
 pytest
 selenium

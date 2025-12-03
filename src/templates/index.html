@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Store Demo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Product Store</h1>
+            <p>Manage your products</p>
+        </header>
+
+        <main>
+            <!-- Add Product Form -->
+            <section class="add-product-section">
+                <h2>Add New Product</h2>
+                <form id="product-form" aria-label="Add product form">
+                    <div class="form-group">
+                        <label for="product-name">Product Name <span aria-label="required">*</span></label>
+                        <input 
+                            type="text" 
+                            id="product-name" 
+                            name="name" 
+                            required 
+                            aria-required="true"
+                            placeholder="Enter product name">
+                    </div>
+                    <div class="form-group">
+                        <label for="product-description">Description</label>
+                        <textarea 
+                            id="product-description" 
+                            name="description" 
+                            rows="3"
+                            placeholder="Enter product description"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Product</button>
+                </form>
+            </section>
+
+            <!-- Products List -->
+            <section class="products-section">
+                <h2>Products</h2>
+                <div id="loading" class="loading" role="status" aria-live="polite">
+                    Loading products...
+                </div>
+                <div id="error" class="error" role="alert" aria-live="assertive" style="display: none;"></div>
+                <div id="products-list" class="products-grid"></div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Edit Modal -->
+    <div id="edit-modal" class="modal" role="dialog" aria-labelledby="modal-title" aria-modal="true">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Edit Product</h2>
+                <button class="close-btn" aria-label="Close modal">&times;</button>
+            </div>
+            <form id="edit-form">
+                <input type="hidden" id="edit-product-id">
+                <div class="form-group">
+                    <label for="edit-product-name">Product Name <span aria-label="required">*</span></label>
+                    <input 
+                        type="text" 
+                        id="edit-product-name" 
+                        name="name" 
+                        required
+                        aria-required="true">
+                </div>
+                <div class="form-group">
+                    <label for="edit-product-description">Description</label>
+                    <textarea 
+                        id="edit-product-description" 
+                        name="description" 
+                        rows="3"></textarea>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary cancel-btn">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Update Product</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
