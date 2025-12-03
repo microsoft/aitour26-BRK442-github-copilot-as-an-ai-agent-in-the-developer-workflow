@@ -15,7 +15,7 @@ const cancelBtn = document.querySelector('.cancel-btn');
 document.addEventListener('DOMContentLoaded', () => {
     loadProducts();
     setupEventListeners();
-    attachProductEventListeners(); // Set up event delegation once
+    setupProductEventDelegation();
 });
 
 // Setup Event Listeners
@@ -40,8 +40,8 @@ function setupEventListeners() {
     });
 }
 
-// Attach event listeners to product cards using event delegation
-function attachProductEventListeners() {
+// Setup product event delegation
+function setupProductEventDelegation() {
     productsList.addEventListener('click', (e) => {
         const button = e.target.closest('button[data-action]');
         if (!button) return;
@@ -207,8 +207,8 @@ async function handleUpdateProduct(e) {
 
 // Show delete confirmation
 function showDeleteConfirmation(productId) {
-    // Create accessible confirmation using the existing modal pattern
-    const productCard = productsList.querySelector(`[data-id="${escapeHtml(productId)}"]`);
+    // Find the product card and get the product name for a more informative confirmation
+    const productCard = productsList.querySelector(`[data-id="${productId}"]`);
     const productName = productCard?.querySelector('h3')?.textContent || 'this product';
     
     if (confirm(`Are you sure you want to delete "${productName}"? This action cannot be undone.`)) {
