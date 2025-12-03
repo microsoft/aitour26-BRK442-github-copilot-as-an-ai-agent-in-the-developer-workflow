@@ -15,6 +15,7 @@ const cancelBtn = document.querySelector('.cancel-btn');
 document.addEventListener('DOMContentLoaded', () => {
     loadProducts();
     setupEventListeners();
+    attachProductEventListeners(); // Set up event delegation once
 });
 
 // Setup Event Listeners
@@ -89,23 +90,26 @@ function displayProducts(products) {
         return;
     }
 
-    productsList.innerHTML = products.map(product => `
-        <div class="product-card" data-id="${escapeHtml(product.id)}">
-            <h3>${escapeHtml(product.name)}</h3>
-            <p>${escapeHtml(product.description || 'No description')}</p>
-            <div class="product-card-actions">
-                <button class="btn btn-edit" data-action="edit" data-id="${escapeHtml(product.id)}" aria-label="Edit ${escapeHtml(product.name)}">
-                    Edit
-                </button>
-                <button class="btn btn-danger" data-action="delete" data-id="${escapeHtml(product.id)}" aria-label="Delete ${escapeHtml(product.name)}">
-                    Delete
-                </button>
+    productsList.innerHTML = products.map(product => {
+        const escapedId = escapeHtml(product.id);
+        const escapedName = escapeHtml(product.name);
+        const escapedDescription = escapeHtml(product.description || 'No description');
+        
+        return `
+            <div class="product-card" data-id="${escapedId}">
+                <h3>${escapedName}</h3>
+                <p>${escapedDescription}</p>
+                <div class="product-card-actions">
+                    <button class="btn btn-edit" data-action="edit" data-id="${escapedId}" aria-label="Edit ${escapedName}">
+                        Edit
+                    </button>
+                    <button class="btn btn-danger" data-action="delete" data-id="${escapedId}" aria-label="Delete ${escapedName}">
+                        Delete
+                    </button>
+                </div>
             </div>
-        </div>
-    `).join('');
-    
-    // Add event delegation for product actions
-    attachProductEventListeners();
+        `;
+    }).join('');
 }
 
 // Handle add product
@@ -204,7 +208,7 @@ async function handleUpdateProduct(e) {
 // Show delete confirmation
 function showDeleteConfirmation(productId) {
     // Create accessible confirmation using the existing modal pattern
-    const productCard = document.querySelector(`[data-id="${CSS.escape(productId)}"]`);
+    const productCard = productsList.querySelector(`[data-id="${escapeHtml(productId)}"]`);
     const productName = productCard?.querySelector('h3')?.textContent || 'this product';
     
     if (confirm(`Are you sure you want to delete "${productName}"? This action cannot be undone.`)) {
