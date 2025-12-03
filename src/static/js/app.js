@@ -39,6 +39,23 @@ function setupEventListeners() {
     });
 }
 
+// Attach event listeners to product cards using event delegation
+function attachProductEventListeners() {
+    productsList.addEventListener('click', (e) => {
+        const button = e.target.closest('button[data-action]');
+        if (!button) return;
+        
+        const action = button.dataset.action;
+        const productId = button.dataset.id;
+        
+        if (action === 'edit') {
+            openEditModal(productId);
+        } else if (action === 'delete') {
+            showDeleteConfirmation(productId);
+        }
+    });
+}
+
 // Load all products
 async function loadProducts() {
     try {
@@ -73,19 +90,22 @@ function displayProducts(products) {
     }
 
     productsList.innerHTML = products.map(product => `
-        <div class="product-card" data-id="${product.id}">
+        <div class="product-card" data-id="${escapeHtml(product.id)}">
             <h3>${escapeHtml(product.name)}</h3>
             <p>${escapeHtml(product.description || 'No description')}</p>
             <div class="product-card-actions">
-                <button class="btn btn-edit" onclick="openEditModal('${product.id}')" aria-label="Edit ${escapeHtml(product.name)}">
+                <button class="btn btn-edit" data-action="edit" data-id="${escapeHtml(product.id)}" aria-label="Edit ${escapeHtml(product.name)}">
                     Edit
                 </button>
-                <button class="btn btn-danger" onclick="deleteProduct('${product.id}')" aria-label="Delete ${escapeHtml(product.name)}">
+                <button class="btn btn-danger" data-action="delete" data-id="${escapeHtml(product.id)}" aria-label="Delete ${escapeHtml(product.name)}">
                     Delete
                 </button>
             </div>
         </div>
     `).join('');
+    
+    // Add event delegation for product actions
+    attachProductEventListeners();
 }
 
 // Handle add product
@@ -123,7 +143,7 @@ async function handleAddProduct(e) {
 // Open edit modal
 async function openEditModal(productId) {
     try {
-        const response = await fetch(`${API_BASE_URL}/${productId}`);
+        const response = await fetch(`${API_BASE_URL}/${encodeURIComponent(productId)}`);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -160,7 +180,7 @@ async function handleUpdateProduct(e) {
     };
 
     try {
-        const response = await fetch(`${API_BASE_URL}/${productId}`, {
+        const response = await fetch(`${API_BASE_URL}/${encodeURIComponent(productId)}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -181,14 +201,21 @@ async function handleUpdateProduct(e) {
     }
 }
 
+// Show delete confirmation
+function showDeleteConfirmation(productId) {
+    // Create accessible confirmation using the existing modal pattern
+    const productCard = document.querySelector(`[data-id="${CSS.escape(productId)}"]`);
+    const productName = productCard?.querySelector('h3')?.textContent || 'this product';
+    
+    if (confirm(`Are you sure you want to delete "${productName}"? This action cannot be undone.`)) {
+        deleteProduct(productId);
+    }
+}
+
 // Delete product
 async function deleteProduct(productId) {
-    if (!confirm('Are you sure you want to delete this product?')) {
-        return;
-    }
-
     try {
-        const response = await fetch(`${API_BASE_URL}/${productId}`, {
+        const response = await fetch(`${API_BASE_URL}/${encodeURIComponent(productId)}`, {
             method: 'DELETE'
         });
 
