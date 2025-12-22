@@ -61,7 +61,8 @@
         }
 
         input[type="text"],
-        textarea {
+        textarea,
+        select {
             width: 100%;
             padding: 10px 15px;
             border: 2px solid #e0e0e0;
@@ -71,7 +72,8 @@
         }
 
         input[type="text"]:focus,
-        textarea:focus {
+        textarea:focus,
+        select:focus {
             outline: none;
             border-color: #667eea;
         }
@@ -163,6 +165,16 @@
             line-height: 1.5;
         }
 
+        .category-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #667eea;
+            color: white;
+            border-radius: 12px;
+            font-size: 0.875rem;
+            margin-bottom: 10px;
+        }
+
         .product-actions {
             display: flex;
             gap: 5px;
@@ -226,6 +238,21 @@
                     <input type="text" id="productName" required>
                 </div>
                 <div class="form-group">
+                    <label for="productCategory">Category *</label>
+                    <select id="productCategory" required>
+                        <option value="">Select a category</option>
+                        <option value="Electrical">Electrical</option>
+                        <option value="Garden & Outdoor">Garden & Outdoor</option>
+                        <option value="Hand tools">Hand tools</option>
+                        <option value="Hardware">Hardware</option>
+                        <option value="Lumber & Building materials">Lumber & Building materials</option>
+                        <option value="Paint & Finishes">Paint & Finishes</option>
+                        <option value="Plumbing">Plumbing</option>
+                        <option value="Power tools">Power tools</option>
+                        <option value="Storage & organization">Storage & organization</option>
+                    </select>
+                </div>
+                <div class="form-group">
                     <label for="productDescription">Description</label>
                     <textarea id="productDescription"></textarea>
                 </div>
@@ -251,6 +278,7 @@
         const productList = document.getElementById('productList');
         const productId = document.getElementById('productId');
         const productName = document.getElementById('productName');
+        const productCategory = document.getElementById('productCategory');
         const productDescription = document.getElementById('productDescription');
         const submitBtn = document.getElementById('submitBtn');
         const cancelBtn = document.getElementById('cancelBtn');
@@ -290,9 +318,10 @@
                 productItem.className = 'product-item';
                 productItem.innerHTML = `
                     <h3>${escapeHtml(product.name)}</h3>
+                    ${product.category ? `<div class="category-badge">${escapeHtml(product.category)}</div>` : ''}
                     <p>${escapeHtml(product.description || 'No description')}</p>
                     <div class="product-actions">
-                        <button class="btn btn-success" onclick="editProduct('${product.id}', '${escapeHtml(product.name)}', '${escapeHtml(product.description || '')}')">Edit</button>
+                        <button class="btn btn-success" onclick="editProduct('${product.id}', '${escapeHtml(product.name)}', '${escapeHtml(product.category || '')}', '${escapeHtml(product.description || '')}')">Edit</button>
                         <button class="btn btn-danger" onclick="deleteProduct('${product.id}')">Delete</button>
                     </div>
                 `;
@@ -312,6 +341,7 @@
             e.preventDefault();
             
             const name = productName.value.trim();
+            const category = productCategory.value;
             const description = productDescription.value.trim();
             
             if (!name) {
@@ -319,7 +349,12 @@
                 return;
             }
 
-            const productData = { name, description };
+            if (!category) {
+                alert('Product category is required');
+                return;
+            }
+
+            const productData = { name, category, description };
 
             try {
                 submitBtn.disabled = true;
@@ -364,10 +399,11 @@
         }
 
         // Edit product
-        function editProduct(id, name, description) {
+        function editProduct(id, name, category, description) {
             isEditing = true;
             productId.value = id;
             productName.value = name;
+            productCategory.value = category;
             productDescription.value = description;
             formTitle.textContent = 'Edit Product';
             submitBtn.textContent = 'Update Product';
