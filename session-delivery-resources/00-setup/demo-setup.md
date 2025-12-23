@@ -86,7 +86,7 @@ These are installed with the setup script when using a local Codespace, but if r
 ### Demo 2: PR Review Process
 **Setup Requirements:**
 - [ ] Open a local Codespace of this repository in VS Code
-- [ ] Ensure the PR created by the Coding Agent from Demo 1 exists (check with the GitHub extension Pull Request panel)
+- [ ] Ensure the PR created by the Cloud Agent from Demo 1 exists (check with the GitHub extension Pull Request panel)
 - [ ] GitHub Pull Request extension properly authenticated
 - [ ] Test the PR review workflow beforehand, but **DO NOT** submit a review before the demo
 - [Demo notes](../02-cloud-agent-pr-review/cloud-agent-pr-review.md)
@@ -120,7 +120,7 @@ These are installed with the setup script when using a local Codespace, but if r
 If running live:
 - [ ] SQLite development environment ready
 - [ ] SQLite Viewer extension installed into the local VS Code Codespace instance
-- [ ] Microsoft Learn MCP server installed and available for best practice retreival
+- [ ] Microsoft Learn MCP server installed and available for best practice retrieval
 - [ ] Custom test-agent from Demo 3 created and available for test code creation
 - [Demo notes](../06-db-migration/add-sqldb.md)
 

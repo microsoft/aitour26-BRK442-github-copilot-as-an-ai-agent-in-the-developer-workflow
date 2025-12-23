@@ -21,7 +21,7 @@ Use recorded demo video | - Talk over the video demo, explaining each step as it
 
 **Model:** Claude Sonnet 4.5
 
-**Prompt:** "Plan out the process of adding a SQLite database to this application to move away from in-memory storage this application is currently using. Store all of the related files in a new directory /db. Update the .gitignore file to make sure no senstive information is committed to git and do not use any specific product names when testing. Use the Microsoft Learn MCP server to research best practices and use the custom test-agent to write and update the tests for the application."
+**Prompt:** "Plan out the process of adding a SQLite database to this application to move away from in-memory storage this application is currently using. Store all of the related files in a new directory /db. Update the .gitignore file to make sure no sensitive information is committed to git and do not use any specific product names when testing. Use the Microsoft Learn MCP server to research best practices and use the custom test-agent to write and update the tests for the application."
 *********
 
 ## Talking points 🎙

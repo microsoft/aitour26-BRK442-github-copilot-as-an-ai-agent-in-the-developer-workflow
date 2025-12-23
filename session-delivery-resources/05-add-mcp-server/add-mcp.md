@@ -1,4 +1,4 @@
-## Demo 5: Create GitHub issues from project documentation using GitHub MCP Server
+## Demo 5: Install Microsoft Learn MCP Server into local workspace
 
 ### Pre-requisites (Checklist) ✅
 
@@ -9,7 +9,7 @@
 
 Delivery style (Recommended) | Demo Description
 --------------|-------------
-Do it live | - Open the VS Code extensions pane <br> - Search for "_@mcp Microsoft Learn_" <br> - Select the Microsoft Learn MCP server and Click on "_Install in Workspace_" to install it locally into your workspace <br> - Go the project file explorer and walk through the newly created `.vscode/mcp.json` file <br> - Open the GitHub Copilot chat window and show the MCP server is available in the tool picker <br> - Discuss how this can improve best practises and get up to date information on technologies
+Do it live | - Open the VS Code extensions pane <br> - Search for "_@mcp Microsoft Learn_" <br> - Select the Microsoft Learn MCP server and Click on "_Install in Workspace_" to install it locally into your workspace <br> - Go the project file explorer and walk through the newly created `.vscode/mcp.json` file <br> - Open the GitHub Copilot chat window and show the MCP server is available in the tool picker <br> - Discuss how this can improve best practices and get up to date information on technologies
 
 ### Prompt(s)
 
@@ -20,7 +20,7 @@ If you want to test this, use the following prompt to demonstrate how it works w
 
 **Model:** Any that allow tool calling, eg. GPT-4.1
 
-**Prompt:** "What are Microsoft's best practises for Python development?"
+**Prompt:** "What are Microsoft's best practices for Python development?"
 *********
 
 ### Talking points 🎙
