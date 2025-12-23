@@ -16,7 +16,7 @@ Do it live | - Open the pull request in VS Code using the GitHub Pull Request ex
 ### Prompt(s) 💬
 
 ********
-This great but each product entry also needs a category drop down list. Create a drop down list with the following fields and also show this on each product entry.
+"This great but each product entry also needs a category drop down list. Create a drop down list with the following fields and also show this on each product entry.
 
 - Electrical
 - Garden & Outdoor
@@ -28,7 +28,7 @@ This great but each product entry also needs a category drop down list. Create a
 - Power tools
 - Storage & organization
 
-Show screenshots of this working and do not include any actual product names. Keep the test data previously used.
+Show screenshots of this working and do not include any actual product names. Keep the test data previously used."
 ********
 
 ### Talking points 🎙

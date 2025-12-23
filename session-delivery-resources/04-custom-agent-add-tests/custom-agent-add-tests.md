@@ -13,7 +13,11 @@ Do it live | - For demo certainty, make sure the test code is in the custom agen
 ### Prompts
 
 *********
-I have a file called test_app.py. Create some unit tests to test the CRUD functionality of functions in app.py
+**GHCP Mode:** test-agent
+
+**Model:** Claude Sonnet 4.5
+
+**Prompt:** I have a file called test_app.py. Create some unit tests to test the CRUD functionality of functions in app.py
 *********
 
 ### Talking points 🎙

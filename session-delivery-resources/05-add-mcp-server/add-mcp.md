@@ -17,8 +17,10 @@ If you want to test this, use the following prompt to demonstrate how it works w
 
 *********
 **GHCP Mode:** Agent
+
 **Model:** Any that allow tool calling, eg. GPT-4.1
-**Prompt:** What are Microsoft's best practises for Python development?
+
+**Prompt:** "What are Microsoft's best practises for Python development?"
 *********
 
 ### Talking points 🎙
