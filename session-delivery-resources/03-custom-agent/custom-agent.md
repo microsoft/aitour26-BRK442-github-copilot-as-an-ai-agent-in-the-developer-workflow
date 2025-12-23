@@ -8,17 +8,16 @@
 
 Delivery style (Recommended) | Demo Description 
 --------------|------------- 
-Do it live | - Create a new file called `AGENTS.md` in the root project directory <br> - Add the file contents outlined below to the file <br> - Explain that this file serves as custom instructions for GitHub Copilot when working on this project <br> - Highlight the testing patterns and application overview sections <br> - Show how Copilot will reference this file with a test prompt "List all of the API endpoints" and explain that it automatically pulls in the file for context (shown in the Copilot chat window)
+Do it live | - Open GHCP Chat window <br> - In the GitHub Copilot chat window, click on “Configure Custom Agents…” link in the mode selector drop down <br> - In the VS Code prompt: Create new custom agent… -> .github/agents -> test-agent <br> - Enter a description in the test-agent.agent.md file "_This agent will be used to write tests for the application_" <br> - Click on "Configure tools..." link within the file to configure the tools for the custom agent <br> - Select the "Built In" checkbox <br> - Fill the file with content code provided below <br> - Show the custom agent available in the modes drop down list in GitHub Copilot Chat window
 
 ### Talking points 🎙
 
-1. Custom instructions help tailor Copilot's behavior to your specific needs and preferences.
-2. They can be used to enforce security policies, coding standards, or any other guidelines relevant to your project.
-3. Custom instructions can be updated as your project evolves or as new requirements arise.
+1. Custom agents are for specific tasks with specilised context and tool availability.
+2. Custom agents can be updated as your project evolves or as new requirements arise.
 
 ---
 
-### Use the following file contents and add it to your AGENTS.md file upon creation. Explain the contents, including the test pattern as part of the demo ⬇️:
+### Use the following file contents and add it to your custom agent .md file upon creation. Explain the contents, including the test pattern as part of the demo ⬇️:
 
 # Application Overview and Testing Guide
 
