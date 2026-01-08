@@ -10,9 +10,9 @@ This document provides comprehensive setup instructions for delivering the **BRK
 --------------| --------------- | --------------- |
 | Demo 1 | Assign an issue to the Cloud Agent | [Recorded Video](https://aka.ms/AAxrxxv) <br> [Instructions](../01-cloud-agent-assign-task/cloud-agent-assign.md)
 | Demo 2 | Review the PR from the Cloud Agent | [Backup Recording](https://aka.ms/AAxs5hy) <br> [Live Demo](../02-cloud-agent-pr-review/cloud-agent-pr-review.md)
-| Demo 3 | Create a Custom Agent  | [Backup Recording](https://aka.ms/AAxrxxu) <br> [Live Demo](../03-custom-agent/custom-agent.md)
-| Demo 4 | Add tests using the Custom Agent | [Backup Recording](https://aka.ms/AAxs5hv) <br> [Live Demo](../04-custom-agent-add-tests/custom-agent-add-tests.md)
-| Demo 5 | Install MSFT Learn MCP server into a local workspace | [Backup Recording](https://aka.ms/AAxs5hw) <br> [Live Demo](../05-add-mcp-server/add-mcp.md)
+| Demo 3 | Create a Custom Agent  | [Backup Recording](https://aka.ms/AAz5bmb) <br> [Live Demo](../03-custom-agent/custom-agent.md)
+| Demo 4 | Add tests using the Custom Agent | [Backup Recording](https://aka.ms/AAz5bma) <br> [Live Demo](../04-custom-agent-add-tests/custom-agent-add-tests.md)
+| Demo 5 | Install MSFT Learn MCP server into a local workspace | [Backup Recording](https://aka.ms/AAz5j9c) <br> [Live Demo](../05-add-mcp-server/add-mcp.md)
 | Demo 6 | Add a SQLite database to the project  | [Recording Video](https://aka.ms/AAxs5hx) <br> [Instructions](../06-db-migration/add-sqldb.md)
 
 

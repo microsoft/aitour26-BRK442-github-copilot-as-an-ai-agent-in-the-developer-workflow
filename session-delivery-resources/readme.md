@@ -22,7 +22,7 @@ Prior to delivering the workshop please:
 
 The workshop is divided into multiple sections including 42 slides and 5 demos
 
-### 🕐Timing
+<!-- ### 🕐Timing
 
 | Time        | Description | Slides
 --------------|------------- |-------------
@@ -32,7 +32,7 @@ The workshop is divided into multiple sections including 42 slides and 5 demos
 20:00 - 25:00 [5 mins]  | Problem 3: Capacity Constraints <br> Solution: Agent mode <br> Demo 4: Add tests using Agent mode | 24 - 29
 25:00 - 35:00 [10 mins]  | Problem 4: Integration Complexity <br> Solution: MCP <br> Demo 5: Installing GitHub MCP Server, creating issues from project documentation |30 - 35
 35:00 - 40:00 [10 mins]  | Problem 5: Technical Complexity <br> Solution: MCP <br> Demo 6: Add SQLite db and use MS docs MCP server for best practices| 36 - 39
-40:00 - 45:00 [5 mins]  | Recap & Summary <br> Call to Action | 40 - 42
+40:00 - 45:00 [5 mins]  | Recap & Summary <br> Call to Action | 40 - 42 -->
 
 ### 🏋️Preparation
 
