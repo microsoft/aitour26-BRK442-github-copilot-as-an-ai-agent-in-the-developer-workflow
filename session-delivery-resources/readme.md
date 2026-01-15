@@ -18,23 +18,23 @@ Prior to delivering the workshop please:
 | Demo Set up Guide     |  [Demo setup](./00-setup/demo-setup.md) | Guide to set up for the demos |
 
 
-## 🚀Get Started
+## 🚀 Get Started
 
-The workshop is divided into multiple sections including 42 slides and 5 demos
+The workshop is divided into multiple sections including 45 slides and 7 demos
 
-<!-- ### 🕐Timing
+### 🕐 Presentation flow
 
-| Time        | Description | Slides
---------------|------------- |-------------
-0:00 - 5:00 [5 mins]  | Introduction - Session & Speaker, <br> Agenda, <br> Scenario - Zava & engineering problems, <br> Solution overview | 1 - 6
-5:00 - 15:00 [10 mins]  | Problem 1: Time to market <br> Solution: Coding Agent <br> Demo 1: Assign issue to Coding agent <br> Coding agent overview <br> Demo 2: Review PR from coding agent | 7 - 17
-15:00 - 20:00 [5 mins] | Problem 2: Quality <br> Solution: Custom instructions <br> Demo 3: Generate custom instructions | 18 - 23
-20:00 - 25:00 [5 mins]  | Problem 3: Capacity Constraints <br> Solution: Agent mode <br> Demo 4: Add tests using Agent mode | 24 - 29
-25:00 - 35:00 [10 mins]  | Problem 4: Integration Complexity <br> Solution: MCP <br> Demo 5: Installing GitHub MCP Server, creating issues from project documentation |30 - 35
-35:00 - 40:00 [10 mins]  | Problem 5: Technical Complexity <br> Solution: MCP <br> Demo 6: Add SQLite db and use MS docs MCP server for best practices| 36 - 39
-40:00 - 45:00 [5 mins]  | Recap & Summary <br> Call to Action | 40 - 42 -->
+| Description | Slides
+------------- |-------------
+Introduction - Session & Speaker <br> Agenda <br> Scenario - Zava & engineering problems <br> Solution overview | 1 - 6
+Problem 1: Time to market <br> Solution: GitHub Copilot Agents <br> Demo 1: Assign issue to the Cloud agent <br> Cloud agent overview <br> Demo 2: Review PR from Cloud agent | 7 - 18
+Problem 2: Quality at scale <br> Solution: GitHub Copilot customizations <br> Demo 3: Create a custom agent <br> Demo 4: Use the custom agent | 19 - 25
+Problem 3: Service Integrations <br> Solution: Model Context Protocol (MCP) <br> Demo 5: Configure an MCP Server | 26 - 30
+Problem 4: Technical Complexity <br> Solution: Multi-Agent Workflow in VS Code <br> Demo 6: Use the Plan, Local and Test Agents to add SQLite db |31 - 34
+Problem 5: App modernizaton <br> Solution: GitHub Copilot App Modernization Tool <br> Demo 7: Upgrade a Java project and Migrate to Azure| 35 - 39
+Recap & Summary <br> Call to Action | 40 - 45
 
-### 🏋️Preparation
+### 🏋️ Preparation
 
 - Ensure you rehearse the session (complete with slides and demos) before delivering it to increase your confidence with the demo story and timings. Each speaker will likely have a different style and pace for this topic, so rehearse to find your own rhythm.
 - Ensure you stay up to date with the latest GitHub Copilot features and UI changes on VS Code, as these can change frequently.
