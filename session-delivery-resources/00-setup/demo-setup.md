@@ -14,6 +14,7 @@ This document provides comprehensive setup instructions for delivering the **BRK
 | Demo 4 | Add tests using the Custom Agent | [Backup Recording](https://aka.ms/AAz5bma) <br> [Live Demo](../04-custom-agent-add-tests/custom-agent-add-tests.md)
 | Demo 5 | Install MSFT Learn MCP server into a local workspace | [Backup Recording](https://aka.ms/AAz5j9c) <br> [Live Demo](../05-add-mcp-server/add-mcp.md)
 | Demo 6 | Add a SQLite database to the project  | [Recording Video](https://aka.ms/AAxs5hx) <br> [Instructions](../06-db-migration/add-sqldb.md)
+| Demo 7 | Upgrade a Java app and implement migration to Azure  | [Recording Video](https://aka.ms/AAz85fx) <br> [Instructions](../07-app-mod/app-mod.md)
 
 
 ## 🔧 Prerequisites & Environment Setup
@@ -123,6 +124,10 @@ If running live:
 - [ ] Microsoft Learn MCP server installed and available for best practice retrieval
 - [ ] Custom test-agent from Demo 3 created and available for test code creation
 - [Demo notes](../06-db-migration/add-sqldb.md)
+
+### Demo 7: App Modernization
+**Setup Requirements:**
+- [ ] **Note:** Uses recorded demo video
 
 ## 🚀 Pre-Demo Checklist
 
