@@ -26,13 +26,13 @@ The workshop is divided into multiple sections including 45 slides and 7 demos
 
 | Description | Slides
 ------------- |-------------
-Introduction - Session & Speaker <br> Agenda <br> Scenario - Zava & engineering problems <br> Solution overview | 1 - 6
-Problem 1: Time to market <br> Solution: GitHub Copilot Agents <br> Demo 1: Assign issue to the Cloud agent <br> Cloud agent overview <br> Demo 2: Review PR from Cloud agent | 7 - 18
-Problem 2: Quality at scale <br> Solution: GitHub Copilot customizations <br> Demo 3: Create a custom agent <br> Demo 4: Use the custom agent | 19 - 25
-Problem 3: Service Integrations <br> Solution: Model Context Protocol (MCP) <br> Demo 5: Configure an MCP Server | 26 - 30
-Problem 4: Technical Complexity <br> Solution: Multi-Agent Workflow in VS Code <br> Demo 6: Use the Plan, Local and Test Agents to add SQLite db |31 - 34
-Problem 5: App modernizaton <br> Solution: GitHub Copilot App Modernization Tool <br> Demo 7: Upgrade a Java project and Migrate to Azure| 35 - 39
-Recap & Summary <br> Call to Action | 40 - 45
+Introduction - Session & Speaker <br> Agenda <br> Scenario - Zava & engineering problems <br> Solution overview | 1 - 8
+Problem 1: Time to market <br> Solution: GitHub Copilot Agents <br> Demo 1: Assign issue to the Cloud agent <br> Cloud agent overview <br> Demo 2: Review PR from Cloud agent | 9 - 17
+Problem 2: Quality at scale <br> Solution: GitHub Copilot customizations <br> Demo 3: Create & use a custom agent | 18 - 23
+Problem 3: Service Integrations <br> Solution: Model Context Protocol (MCP) <br> | 24 - 26
+Problem 4: Technical Complexity <br> Solution: Multi-Agent Workflow in VS Code <br> Demo 4: Use the Plan, Local and Test Agents to add SQLite db |27 - 30
+Problem 5: App modernizaton <br> Solution: GitHub Copilot App Modernization Tool <br> Demo 7: Assess & upgrade a Java project, then Migrate to Azure| 31 - 38
+Recap & Summary <br> Call to Action | 39 - 44
 
 ### 🏋️ Preparation
 

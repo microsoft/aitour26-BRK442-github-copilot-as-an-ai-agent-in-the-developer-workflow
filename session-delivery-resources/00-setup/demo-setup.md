@@ -10,9 +10,11 @@ This document provides comprehensive setup instructions for delivering the **BRK
 --------------| --------------- | --------------- |
 | Demo 1 | Assign an issue to the Cloud Agent from the Copilot CLI | [Recorded Video](https://aka.ms/AAxrxxv) <br> [Instructions](../01-cloud-agent-assign-task/cloud-agent-assign.md)
 | Demo 2 | Review the PR from the Cloud Agent | [Backup Recording](https://aka.ms/AAxs5hy) <br> [Live Demo](../02-cloud-agent-pr-review/cloud-agent-pr-review.md)
-| Demo 3 | Create a Custom Test Agent  | [Backup Recording](https://aka.ms/AAz5bmb) <br> [Live Demo](../03-custom-test-agent/custom-test-agent.md)
+| Demo 3 | Create & use a Custom Test Agent  | [Backup Recording](https://aka.ms/AAz5bmb) <br> [Live Demo](../03-custom-test-agent/custom-test-agent.md)
 | Demo 4 | Add a SQLite database to the project  | [Recording Video](https://aka.ms/AAxs5hx) <br> [Instructions](../04-db-migration/add-sqldb.md)
-| Demo 5 | Upgrade a Java app and implement migration to Azure  | [Recording Video](https://aka.ms/AAz85fx) <br> [Instructions](../05-app-mod/app-mod.md)
+| Demo 5 | Part I - Assess a Java project  | [Recording Video](https://aka.ms/AAz85fx) <br> [Instructions](../05-app-mod/app-mod.md)
+| Demo 5 | Part II - Upgrade a Java app  | [Recording Video](https://aka.ms/AAzvekl)
+| Demo 5 | Part III - Create & implement a migration plan to Azure  | [Recording Video](https://aka.ms/AAzxjfp)
 
 
 ## 🔧 Prerequisites & Environment Setup

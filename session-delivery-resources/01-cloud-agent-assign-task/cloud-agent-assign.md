@@ -26,4 +26,4 @@ Use recorded demo video | - Open Copilot CLI in your terminal using the `copilot
 2. **Premium Requests:** Each Coding Agent run uses 1 premium request
 3. **Processing Time:** Coding Agent tasks take several minutes depending on complexity (but are prone to taking much longer)
 4. **Session Logs:** All Coding Agent steps are captured in session logs
-5. **Language Model Picker:** Users have the ability to show/hide/add models from other providers within the LMP
+<!-- 5. **Language Model Picker:** Users have the ability to show/hide/add models from other providers within the LMP -->
