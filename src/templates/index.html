@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Store</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #f5f7fa;
+      color: #222;
+      min-height: 100vh;
+      padding: 1rem;
+    }
+
+    header {
+      background: #1a73e8;
+      color: #fff;
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+    }
+
+    header h1 { font-size: 1.5rem; }
+
+    .container { max-width: 800px; margin: 0 auto; }
+
+    /* Add form */
+    .card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.12);
+      padding: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .card h2 { font-size: 1.1rem; margin-bottom: 1rem; }
+
+    form { display: flex; flex-direction: column; gap: .75rem; }
+
+    label { font-size: .875rem; font-weight: 600; }
+
+    input, textarea {
+      width: 100%;
+      padding: .5rem .75rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-family: inherit;
+    }
+
+    input:focus, textarea:focus {
+      outline: 2px solid #1a73e8;
+      border-color: transparent;
+    }
+
+    textarea { resize: vertical; min-height: 80px; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .5rem 1rem;
+      border: none;
+      border-radius: 6px;
+      font-size: .9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity .15s;
+    }
+    .btn:hover { opacity: .85; }
+    .btn:focus-visible { outline: 2px solid #1a73e8; outline-offset: 2px; }
+
+    .btn-primary  { background: #1a73e8; color: #fff; }
+    .btn-success  { background: #34a853; color: #fff; }
+    .btn-danger   { background: #ea4335; color: #fff; }
+    .btn-secondary{ background: #e8eaed; color: #222; }
+    .btn-sm       { padding: .3rem .7rem; font-size: .8rem; }
+
+    /* Status messages */
+    #status {
+      padding: .75rem 1rem;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+      display: none;
+      font-size: .9rem;
+    }
+    #status.error   { background: #fce8e6; color: #c5221f; display: block; }
+    #status.success { background: #e6f4ea; color: #137333; display: block; }
+    #status.loading { background: #e8f0fe; color: #1a73e8; display: block; }
+
+    /* Product list */
+    #product-list { list-style: none; display: flex; flex-direction: column; gap: .75rem; }
+
+    .product-item {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.1);
+      padding: 1rem 1.25rem;
+    }
+
+    .product-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: .5rem;
+      flex-wrap: wrap;
+    }
+
+    .product-name { font-weight: 700; font-size: 1rem; }
+    .product-desc { color: #555; font-size: .875rem; margin-top: .25rem; }
+    .product-id   { color: #aaa; font-size: .7rem; font-family: monospace; margin-top: .25rem; }
+
+    .product-actions { display: flex; gap: .5rem; flex-shrink: 0; }
+
+    /* Inline edit form */
+    .edit-form { margin-top: .75rem; display: flex; flex-direction: column; gap: .5rem; }
+    .edit-form .row { display: flex; gap: .5rem; flex-wrap: wrap; }
+    .edit-form .row .btn { white-space: nowrap; }
+
+    /* Empty state */
+    .empty { text-align: center; color: #999; padding: 2rem; }
+
+    @media (max-width: 500px) {
+      .product-header { flex-direction: column; }
+      .product-actions { margin-top: .5rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>🛒 Product Store</h1>
+  </header>
+
+  <div id="status" role="alert" aria-live="polite"></div>
+
+  <!-- Add product form -->
+  <section class="card" aria-labelledby="add-heading">
+    <h2 id="add-heading">Add New Product</h2>
+    <form id="add-form" novalidate>
+      <div>
+        <label for="add-name">Name <span aria-hidden="true">*</span></label>
+        <input id="add-name" name="name" type="text" placeholder="Product name" required autocomplete="off" />
+      </div>
+      <div>
+        <label for="add-desc">Description</label>
+        <textarea id="add-desc" name="description" placeholder="Product description (optional)"></textarea>
+      </div>
+      <div>
+        <button type="submit" class="btn btn-primary">Add Product</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- Product list -->
+  <section aria-labelledby="list-heading">
+    <h2 id="list-heading" style="margin-bottom:.75rem;font-size:1.1rem;">Products</h2>
+    <ul id="product-list" aria-label="Product list">
+      <li class="empty">Loading products…</li>
+    </ul>
+  </section>
+</div>
+
+<script>
+  const API = '/products';
+  const statusEl = document.getElementById('status');
+  const listEl   = document.getElementById('product-list');
+  const addForm  = document.getElementById('add-form');
+
+  /* ── Utilities ────────────────────────────────────────── */
+
+  function showStatus(msg, type = 'loading') {
+    statusEl.textContent = msg;
+    statusEl.className = type;
+    if (type !== 'loading') setTimeout(() => { statusEl.className = ''; }, 3500);
+  }
+
+  function clearStatus() { statusEl.className = ''; }
+
+  function escape(str) {
+    return String(str)
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  /* ── API helpers ──────────────────────────────────────── */
+
+  async function apiFetch(url, options = {}) {
+    const res = await fetch(url, {
+      headers: { 'Content-Type': 'application/json' },
+      ...options,
+    });
+    if (res.status === 204) return null;
+    const body = await res.json().catch(() => null);
+    if (!res.ok) throw new Error(body?.error || `HTTP ${res.status}`);
+    return body;
+  }
+
+  /* ── Render ───────────────────────────────────────────── */
+
+  function renderList(products) {
+    if (!products.length) {
+      listEl.innerHTML = '<li class="empty">No products yet. Add one above!</li>';
+      return;
+    }
+    listEl.innerHTML = products.map(p => `
+      <li class="product-item" data-id="${escape(p.id)}">
+        <div class="product-header">
+          <div>
+            <div class="product-name">${escape(p.name)}</div>
+            <div class="product-desc">${escape(p.description)}</div>
+            <div class="product-id">ID: ${escape(p.id)}</div>
+          </div>
+          <div class="product-actions">
+            <button class="btn btn-secondary btn-sm" onclick="startEdit('${escape(p.id)}','${escape(p.name)}','${escape(p.description)}')" aria-label="Edit ${escape(p.name)}">Edit</button>
+            <button class="btn btn-danger btn-sm" onclick="deleteProduct('${escape(p.id)}','${escape(p.name)}')" aria-label="Delete ${escape(p.name)}">Delete</button>
+          </div>
+        </div>
+        <div class="edit-form" id="edit-${escape(p.id)}" hidden>
+          <label for="edit-name-${escape(p.id)}">Name</label>
+          <input id="edit-name-${escape(p.id)}" type="text" aria-label="Edit name" />
+          <label for="edit-desc-${escape(p.id)}">Description</label>
+          <textarea id="edit-desc-${escape(p.id)}" aria-label="Edit description"></textarea>
+          <div class="row">
+            <button class="btn btn-success btn-sm" onclick="saveEdit('${escape(p.id)}')">Save</button>
+            <button class="btn btn-secondary btn-sm" onclick="cancelEdit('${escape(p.id)}')">Cancel</button>
+          </div>
+        </div>
+      </li>
+    `).join('');
+  }
+
+  /* ── Load products ────────────────────────────────────── */
+
+  async function loadProducts() {
+    showStatus('Loading products…', 'loading');
+    try {
+      const products = await apiFetch(API);
+      renderList(products);
+      clearStatus();
+    } catch (err) {
+      showStatus(`Failed to load products: ${err.message}`, 'error');
+      listEl.innerHTML = '<li class="empty">Could not load products.</li>';
+    }
+  }
+
+  /* ── Add product ──────────────────────────────────────── */
+
+  addForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const name = document.getElementById('add-name').value.trim();
+    const description = document.getElementById('add-desc').value.trim();
+    if (!name) { showStatus('Product name is required.', 'error'); return; }
+    showStatus('Adding product…', 'loading');
+    try {
+      await apiFetch(API, { method: 'POST', body: JSON.stringify({ name, description }) });
+      addForm.reset();
+      showStatus('Product added!', 'success');
+      await loadProducts();
+    } catch (err) {
+      showStatus(`Failed to add product: ${err.message}`, 'error');
+    }
+  });
+
+  /* ── Edit product ─────────────────────────────────────── */
+
+  function startEdit(id, name, description) {
+    const editDiv = document.getElementById(`edit-${id}`);
+    document.getElementById(`edit-name-${id}`).value = name;
+    document.getElementById(`edit-desc-${id}`).value = description;
+    editDiv.hidden = false;
+    document.getElementById(`edit-name-${id}`).focus();
+  }
+
+  function cancelEdit(id) {
+    document.getElementById(`edit-${id}`).hidden = true;
+  }
+
+  async function saveEdit(id) {
+    const name = document.getElementById(`edit-name-${id}`).value.trim();
+    const description = document.getElementById(`edit-desc-${id}`).value.trim();
+    if (!name) { showStatus('Product name is required.', 'error'); return; }
+    showStatus('Saving…', 'loading');
+    try {
+      await apiFetch(`${API}/${id}`, { method: 'PUT', body: JSON.stringify({ name, description }) });
+      showStatus('Product updated!', 'success');
+      await loadProducts();
+    } catch (err) {
+      showStatus(`Failed to update product: ${err.message}`, 'error');
+    }
+  }
+
+  /* ── Delete product ───────────────────────────────────── */
+
+  async function deleteProduct(id, name) {
+    if (!confirm(`Delete "${name}"?`)) return;
+    showStatus('Deleting…', 'loading');
+    try {
+      await apiFetch(`${API}/${id}`, { method: 'DELETE' });
+      showStatus('Product deleted.', 'success');
+      await loadProducts();
+    } catch (err) {
+      showStatus(`Failed to delete product: ${err.message}`, 'error');
+    }
+  }
+
+  /* ── Init ─────────────────────────────────────────────── */
+  loadProducts();
+</script>
+</body>
+</html>
